@@ -6,12 +6,22 @@
 command:
     n:next day
 
-
-add:
-    add at people
-delete:
-
-print all item:
-
-search:
-    基本資料搜尋:姓名、ID、編號、年齡、地區
+operation(工作內容):
+    add:
+        add people 
+    delete:
+        若被解隔及delete
+    print all item:
+        print formfat(discuss?)
+    sort:
+        (discuss?)
+    search:
+        (Given certain infromation about the item to search?)
+        基本資料搜尋:姓名、ID、編號、年齡、地區
+    file I/O:(opinion?)
+        5/13    +450000
+        danny wong  female  ...
+        ...
+    funny func():(maybe divided in to 2 pieces?)
+        print funny words or change the data in the system
+        
