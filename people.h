@@ -9,9 +9,9 @@ struct people{
     char name[50];
     int remain_day;                                     //累積隔離天數
     enum{taipei,kauo,tainai....}c;
-    struct people *pre_inflect_people;
+    struct people *pre_inflect_people;                  //誰是傳染源
     struct people *next;                                //下一個輸入人員
-    int state;                                          //0,1,2
+    int state;                                          //0,1,2(states)
 };
 
 struct city{                                            //城市
@@ -21,6 +21,18 @@ struct city{                                            //城市
     int death;
     double death_rate;
 }cities[10];                                            //各城市
+
+//basic func()
+add()
+delete()
+print_all()
+sort_ID()
+sort_name()
+search_people()
+search_city()
+FILE_I()
+FILE_O()
+
 
 //funny func
 clear()                         //清零

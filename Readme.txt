@@ -1,30 +1,29 @@
 確診隔離人員資料庫(new virus)
 
-2種搜尋
-    1.人類個資搜尋
-    2.傳染鏈查詢
 command:
     n:next day
 
+
 operation(工作內容):
     add:
-        add people 
+        add people
     delete:
         若被解隔及delete
     print all item:
-        print formfat(可以選要people or city)
-            再將各資料全印出
-    sort:
-        
+        依據各city列印people
+    sort:(ascending)
+        according 姓名、ID
+        (方法)用struct pointer array去做sort        
     search:
-        (Given certain infromation about the item to search?)
-        基本資料搜尋:姓名、ID、編號、年齡、地區
-    file I/O:(opinion?)
-        5/13    +450000
+        search_people : according 姓名 or ID : 輸出個人以及他的pre感染鏈
+        search_city : city資料
+    file in:(按n會新增下一天資料)
+        1(天)    +450000
         danny wong  female  ...
-        ...
+    file out:(公告)
+        記錄每天的變化跟結果。
     funny func():(maybe divided in to 2 pieces?)
-        print funny words or change the data in the system
+        change the data in the system
 
 
 //data structure
@@ -41,7 +40,7 @@ struct people{
     enum{taipei,kauo,tainai....}c;
     struct people *pre_inflect_people;
     struct people *next;                                //下一個輸入人員
-    int state;                                          //0,1,2
+    int state;                                          //0,1,2(states)
 };
 
 struct city{                                            //城市
@@ -53,12 +52,12 @@ struct city{                                            //城市
 }cities[10];                                            //各城市
 
 //funny func
-clear()                         //清零
+clear()                         //清零(改公告)
 shorten_remain_day()            //縮短隔天數
 fined()                         //300萬罰款
 apply_for_WHO()                 //申請加入世衛
-medicine()                      //讓people痊癒
+medicine()                      //讓people痊癒(修改資料)
 todays_news()                   //按下next day command會有今日公告
-next_days()                     //好幾天都沒有確診
-block_days()                    //都沒有公告確診
-move_paitient()                 //轉移確診人數
+//(保留)   next_days()                     //好幾天都沒有確診
+block_days()                    //一樣有輸入確診，不過跳過公告(封鎖訊息)即沒有訊息
+move_paitient()                 //轉移確診人數(city間的轉換)
