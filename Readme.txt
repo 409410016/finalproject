@@ -3,7 +3,6 @@
 command:
     n:next day
 
-
 operation(工作內容):
     add:
         add people
@@ -13,7 +12,7 @@ operation(工作內容):
         依據各city列印people
     sort:(ascending)
         according 姓名、ID
-        (方法)用struct pointer array去做sort        
+        (方法)用struct pointer array去做sort
     search:
         search_people : according 姓名 or ID : 輸出個人以及他的pre感染鏈
         search_city : city資料
@@ -25,39 +24,44 @@ operation(工作內容):
     funny func():(maybe divided in to 2 pieces?)
         change the data in the system
 
-
 //data structure
 
-char states[4]={"隔離","居家","解隔"};
-
-typedef struct people *people_node;
-struct people{
+people{
     char ID[50];                                        //案例編號
     int age;
     char sex;                                           //性別
     char name[50];
     int remain_day;                                     //累積隔離天數
-    enum{taipei,kauo,tainai....}c;
-    struct people *pre_inflect_people;
+    enum{taipei,kauo,tainai....}c;                      //在哪個城市
+    struct people *pre_inflect_people;                  //誰是傳染源
     struct people *next;                                //下一個輸入人員
-    int state;                                          //0,1,2(states)
 };
 
-struct city{                                            //城市
+city{                                            //城市
     int total_people;
     int inflected_people;
     float inflected_rate;
     int death;
     double death_rate;
-}cities[10];                                            //各城市
+}cities[5];                                            //各城市
 
+
+jobs:(自行認領)
+print_all()
 //funny func
-clear()                         //清零(改公告)
-shorten_remain_day()            //縮短隔天數
-fined()                         //300萬罰款
-apply_for_WHO()                 //申請加入世衛
-medicine()                      //讓people痊癒(修改資料)
-todays_news()                   //按下next day command會有今日公告
-//(保留)   next_days()                     //好幾天都沒有確診
-block_days()                    //一樣有輸入確診，不過跳過公告(封鎖訊息)即沒有訊息
-move_paitient()                 //轉移確診人數(city間的轉換)
+clear()
+shorten_remain_day()
+fined()
+apply_for_WHO()
+//(保留)   next_days()
+block_days()
+
+basic.c  sort.c  search.c
+
+王 : add(){順便計算總人數} delete() city_update() shorten_remain_day_iter()
+
+丁丁 : sort_ID() sort_name() move_paitient()
+
+吳 : search_people() search_city() medicine()
+
+佑佑 : FILE_I()  FILE_O()  main  todays_news()
