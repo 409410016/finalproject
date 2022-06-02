@@ -13,7 +13,7 @@ struct people{
     char name[50];
     int age;
     int remain_day;                         //累積隔離天數
-    //enum City{A,B,C,D,E};                 //所在城市
+    enum City{A,B,C,D,E}reside;                   //所在城市
     struct people *pre_inflect_people;      //誰是傳染源
     struct people *next;                    //下一個輸入人員
 };
