@@ -7,14 +7,15 @@
 int num_of_people; //目前人數
 int today; //今天第幾天
 
-// 1 Amy F 18 A(city)
+// 1 Amy F 18 A(city) //sex
 struct people{
     char ID[50];                            //案例編號
     char name[50];
     int age;
     int remain_day;                         //累積隔離天數
-    enum City{A,B,C,D,E}reside;                   //所在城市
+    enum City{A,B,C,D,E}reside;             //所在城市
     struct people *pre_inflect_people;      //誰是傳染源
+    struct people *prev;
     struct people *next;                    //下一個輸入人員
 };
 
@@ -39,6 +40,7 @@ void print_people(*);
 void print_city(*);
 void sort();
 void release();
+void city_update();
 
 int main(){
 
@@ -121,11 +123,11 @@ void search(){
     print_city(); // 傳入指標
 }
 
-int *search_people(){
+struct people *search_people(){
     // 回傳該名成員指標
 }
 
-int *search_people(){
+struct people *search_people(){
     // 回傳該名成員指標
 }
 
