@@ -13,7 +13,7 @@ void medecine(struct people **start, const char *ppl_name)
     }
 }
 
-void search_people(struct people **start, const char *ppl_name)
+struct people *search_people(struct people *start, const char ppl_name[])
 {
     struct people *cur = *start;
     while (cur != NULL)
@@ -24,23 +24,25 @@ void search_people(struct people **start, const char *ppl_name)
         }
         else //已經找到people的地址了。
         {
-            print("%s", cur->name);
-            break;
+            return cur;
+//             print("%s", cur->name);
         }
     }
 }
 
-void search_city(struct people **start, const char *ppl_city)
+struct people * search_city(struct people **start, const char ppl_city[])
 {
     // assume city is char array
     struct people *cur = *start;
-    if (strcmp(cur->city, ppl_city))
-    {
-        cur = cur->next;
-    }
-    else
-    {
-        printf("%s", cur->city);
-        break;
-    }
+    while (cur != NULL){
+        if (strcmp(cur->city, ppl_city))
+        {
+            cur = cur->next;
+        }
+        else
+        {   
+            return cur;
+    //         printf("%s", cur->city);
+        }
+   }
 }
