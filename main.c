@@ -13,7 +13,7 @@ struct people{
     char ID[50];                            //案例編號
     char name[50];
     char sex;
-    enum state{};
+    int state;
     int age;
     int remain_day;                         //累積隔離天數
     enum City{A,B,C,D,E}reside;             //所在城市
