@@ -30,7 +30,7 @@ struct city{
 }cities[num_of_cities]; 
 
 struct people *head;
-ptr_people dataArray;                     //用於排序
+ptr_people dataArray[500];                     //用於排序
 int dataNumber;                           //dataArray中用到的資料數
 
 void init();
@@ -85,7 +85,6 @@ void init(){
     // struct head
     head = (struct people*)malloc(sizeof(struct people));
     head->next = NULL;
-    dataArray = (ptr_people)malloc(sizeof(struct people)*500);
 }
 
 void add(){
