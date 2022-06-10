@@ -8,6 +8,7 @@ int num_of_people; //目前人數
 int today; //今天第幾天
 
 // 1 Amy F 18 A(city) //sex
+typedef struct people* ptr_people;
 struct people{
     char ID[50];                            //案例編號
     char name[50];
