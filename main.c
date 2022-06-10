@@ -29,6 +29,7 @@ struct city{
 }cities[num_of_cities]; 
 
 struct people *head;
+ptr_people dataArray[];                     //用於排序
 
 void init();
 void add();
