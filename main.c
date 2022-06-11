@@ -8,7 +8,6 @@ int num_of_people; //目前人數
 int today; //今天第幾天
 
 // 1 Amy F 18 A(city) //sex
-typedef struct people* ptr_people;
 struct people{
     char ID[50];                            //案例編號
     char name[50];
@@ -30,7 +29,7 @@ struct city{
 }cities[num_of_cities]; 
 
 struct people *head;
-ptr_people dataArray[500];                     //用於排序
+struct people* dataArray[500];                     //用於排序
 int dataNumber;                           //dataArray中用到的資料數
 
 void init();
