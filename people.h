@@ -22,6 +22,17 @@ struct city{                                            //城市
     double death_rate;
 }cities[5];                                            //各城市
 
+/ Binary Search Tree
+typedef struct tree *ptrTree;
+typedef struct tree
+{
+    struct people* data;
+    ptrTree left;
+    ptrTree right;
+} tree;
+ptrTree rootName;
+ptrTree rootID;
+
 //basic func()
 add()                           //加入people，同時增加city人數
 city_update()                   //更新rate
