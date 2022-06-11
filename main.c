@@ -56,7 +56,21 @@ void city_update();
 int main(){
     
     init(); // initialized and input city info
+    
+    //創立tree根節點(以NAME排序)
+    ptrTree rootName;
+    rootName = malloc(sizeof(tree));
+    rootName->data = NULL;
+    rootName->left = NULL;
+    rootName->right = NULL;
 
+    //創立tree根節點(以ID排序)
+    ptrTree rootID;
+    rootID = malloc(sizeof(tree));
+    rootID->data = NULL;
+    rootID->left = NULL;
+    rootID->right = NULL;
+    
     //每天
     while(){
         // read data
