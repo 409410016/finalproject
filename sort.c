@@ -1,9 +1,55 @@
 #include "main.c"
 
-void mergeSort(ptr_people *, int, int, char *);
-void merge(ptr_people *, int, int, int, char *);
+void insert(ptrTree, ptrTree, struct people *, char *, int);
+void traversal(ptrTree);
+void delete (char *);
+void sort(ptrTree, ptrTree);
 
-void sort()
+
+void insert(ptrTree front, ptrTree root, struct people* tmp, char *element, int big)
+{
+    //愈檢索位置無node，將其插入
+    if (root == NULL)
+    {
+        root = malloc(sizeof(tree));
+        root->data = tmp;
+        root->left = NULL;
+        root->right = NULL;
+        if(big==-1)
+            front -> left = root;
+        else if(big ==1 )
+            front -> right = root;
+    }
+    // tree為空
+    else if (root->data == NULL)
+        root->data = tmp;
+    // insert進以name排序的BST
+    else if (strcmp(element, "name") == 0)
+    {
+        if (strcmp(tmp->name, root->data->name) < 0)
+            insert(root, root->left, tmp, element, -1);
+        else if (strcmp(tmp->name, root->data->name) > 0)
+            insert(root, root->right, tmp, element, 1);
+    }
+    // insert進以ID排序的BST
+    else if (strcmp(element, "ID") == 0)
+    {
+        //比較位數
+        if (strlen(tmp->ID) < strlen(root->data->ID))
+            insert(root, root->left, tmp, element, -1);
+        else if (strlen(tmp->ID) > strlen(root->data->ID))
+            insert(root, root->right, tmp, element, 0);
+        else if (strlen(tmp->ID) == strlen(root->data->ID))
+        {
+            if (strcmp(tmp->ID, root->data->ID) < 0)
+                insert(root, root->left, tmp, element, -1);
+            else if (strcmp(tmp->ID, root->data->ID) > 0)
+                insert(root, root->right, tmp, element, 1);
+        }
+    }
+}
+
+void sort(ptrTree rootName, ptrTree rootID)
 {
     int No;
     printf("which data do you want to sort: ");
@@ -11,90 +57,20 @@ void sort()
     printf("data type number: ");
     scanf("%d", &No);
     if (No == 1)
-        mergeSort(dataArray, 0, num_of_people - 1, "name");
+        traversal(rootName);
     else if (No == 2)
-        mergeSort(dataArray, 0, num_of_people - 1, "ID");
-    //印出
-    for(int i = 0; i<num_of_people; i++)
-    {
-
-    }
+        traversal(rootID);
+    
 }
 
-// array為main function中的dataArray
-// front為陣列開頭; end為陣列尾端
-// element為進行排序的目標參數(name, ID)
-void mergeSort(ptr_people *array, int front, int end, char *element)
+//中序走訪
+void traversal(ptrTree root)
 {
-    if (front < end) // 矩陣範圍是有效的
+    if(root != NULL)
     {
-        int mid = (front + end) / 2;
-        mergeSort(array, front, mid, element);           // 繼續divide矩陣的前半段subarray
-        mergeSort(array, mid + 1, end, element);         // 繼續divide矩陣的後半段subarray
-        merge(array, front, mid, end, element); // 將兩個subarray做比較, 並合併出排序後的矩陣
-    }
-}
-
-// array為main function中的dataArray
-// front為愈排序子陣列開頭; mid為該陣列中間; end為該陣列尾端
-//以mid為中點，將array中愈排序的子陣列段分割成左右子陣列
-// element為進行排序的目標參數(name, ID)
-void merge(ptr_people *array, int front, int mid, int end, char *element)
-{
-    ptr_people *LeftSub, *RightSub;
-    LeftSub = malloc((mid - front + 1) * sizeof(ptr_people));
-    RightSub = malloc((end - mid) * sizeof(ptr_people));
-
-    int lenLeft = 0, lenRight = 0; //子陣列長度
-    int idxLeft = 0, idxRight = 0; //子陣列檢索到的位置
-
-    //將array區段的值分配至左右子陣列; 排序左右子陣列，由小到大插回array中(改變array的值)
-    if (strcmp(element, "name") == 0)
-    {
-        //初始化
-        for (int i = front; i <= mid; i++)
-            strncpy(LeftSub[lenLeft++]->name, array[i]->name, strlen(array[i]->name));
-        for (int i = mid + 1; i <= end; i++)
-            strncpy(RightSub[lenRight++]->name, array[i]->name, strlen(array[i]->name));
-        //排序
-        for (int i = front; i <= end; i++)
-        {
-            if (strcmp(LeftSub[idxLeft]->name, RightSub[idxRight]->name) < 0)
-            {
-                strncpy(array[i]->name, LeftSub[idxLeft]->name, strlen(LeftSub[idxLeft]->name));
-                idxLeft++;
-            }
-            else
-            {
-                strncpy(array[i]->name, RightSub[idxRight]->name, strlen(RightSub[idxRight]->name));
-                idxRight++;
-            }
-        }
-    }
-    else if (strcmp(element, "ID") == 0)
-    {
-        //初始化
-        for (int i = front; i <= mid; i++)
-            strncpy(LeftSub[lenLeft++]->ID, array[i]->ID, strlen(array[i]->ID));
-        for (int i = mid + 1; i <= end; i++)
-            strncpy(RightSub[lenRight++]->ID, array[i]->ID, strlen(array[i]->ID));
-        //排序
-        for (int i = front; i <= end; i++)
-        {
-            if (lenLeft < lenRight)
-            {
-                strncpy(array[i]->ID, LeftSub[idxLeft]->ID, strlen(LeftSub[idxLeft]->ID));
-                idxLeft++;
-            }
-            else if(lenLeft > lenRight)
-            {
-                strncpy(array[i]->ID, RightSub[idxRight]->ID, strlen(RightSub[idxRight]->ID));
-                idxRight++;
-            }
-            else if(lenLeft == lenRight)
-            {
-
-            }
-        }
+        traversal(root -> left);
+        printf("%s %s %c %d %d\n", root->data->ID, root->data->name, root->data->sex,
+               root->data->age, root->data->remain_day);
+        traversal(root ->right);
     }
 }
