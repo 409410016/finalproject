@@ -29,8 +29,15 @@ struct city{
 }cities[num_of_cities]; 
 
 struct people *head;
-struct people* dataArray[500];                     //用於排序
-int dataNumber;                           //dataArray中用到的資料數
+
+// Binary Search Tree
+typedef struct tree *ptrTree;
+typedef struct tree
+{
+    struct people* data;
+    ptrTree left;
+    ptrTree right;
+} tree;
 
 void init();
 void add();
