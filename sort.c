@@ -35,17 +35,10 @@ void insert(ptrTree front, ptrTree root, struct people* tmp, char *element, int 
     else if (strcmp(element, "ID") == 0)
     {
         //比較位數
-        if (strlen(tmp->ID) < strlen(root->data->ID))
+        if (strcmp(tmp->ID, root->data->ID) < 0)
             insert(root, root->left, tmp, element, -1);
-        else if (strlen(tmp->ID) > strlen(root->data->ID))
-            insert(root, root->right, tmp, element, 0);
-        else if (strlen(tmp->ID) == strlen(root->data->ID))
-        {
-            if (strcmp(tmp->ID, root->data->ID) < 0)
-                insert(root, root->left, tmp, element, -1);
-            else if (strcmp(tmp->ID, root->data->ID) > 0)
-                insert(root, root->right, tmp, element, 1);
-        }
+        else if (strcmp(tmp->ID, root->data->ID) > 0)
+            insert(root, root->right, tmp, element, 1);
     }
 }
 
