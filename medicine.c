@@ -2,6 +2,7 @@
 
 void medecine(struct people **start, const char *ppl_name)
 {
+    
     struct people *cur = *start;
     if (strcmp(cur->city, ppl_name))
     {
@@ -9,7 +10,12 @@ void medecine(struct people **start, const char *ppl_name)
     }
     else
     {
-        cur->remain_day = 0;
+        srand( time(NULL) );
+        int min = 1;
+        int max = 3;
+        int x = rand() % (max - min + 1) + min;
+        if(x==3)
+            cur->remain_day = 0;
     }
 }
 
@@ -30,10 +36,10 @@ struct people *search_people(struct people *start, const char ppl_name[])
     }
 }
 
-struct people * search_city(struct people **start, const char ppl_city[])
+struct people * search_city(struct city **start, const char ppl_city[])
 {
     // assume city is char array
-    struct people *cur = *start;
+    struct city *cur = *start;
     while (cur != NULL){
         if (strcmp(cur->city, ppl_city))
         {
