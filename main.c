@@ -43,6 +43,8 @@ typedef struct tree
     ptrTree left;
     ptrTree right;
 } tree;
+ptrTree rootName;
+ptrTree rootID;
 
 void init();
 void add();
