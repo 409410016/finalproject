@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
+#include<people.h>
 #define num_of_cities 5
 
 int num_of_people; //目前人數
