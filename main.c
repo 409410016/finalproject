@@ -7,6 +7,11 @@
 int num_of_people; //目前人數
 int today; //今天第幾天
 
+typedef enum city City;
+enum city{A,B,C,D,E};
+typedef enum state State;
+enum state{};
+
 // 1 Amy F 18 A(city) //sex
 struct people{
     char ID[50];                            //案例編號
