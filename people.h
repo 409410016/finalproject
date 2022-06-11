@@ -1,4 +1,6 @@
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 char states[4]={"隔離","居家","解隔"};
 
 typedef struct people *people_node;
