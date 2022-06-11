@@ -1,4 +1,4 @@
-#include "main.c"
+#include "people.h"
 
 void insert(ptrTree, ptrTree, struct people *, char *, int);
 void traversal(ptrTree);
