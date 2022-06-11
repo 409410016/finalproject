@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 char states[4]={"隔離","居家","解隔"};
-
+//結構宣告
 typedef struct people *people_node;
 struct people{
     char ID[50];                                        //案例編號
@@ -32,8 +32,11 @@ typedef struct tree
     ptrTree left;
     ptrTree right;
 } tree;
+
+//變數宣告
 ptrTree rootName;
 ptrTree rootID;
+int num_of_people; //目前人數
 
 //basic func()
 add()                           //加入people，同時增加city人數
