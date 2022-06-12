@@ -1,3 +1,5 @@
+#ifndef _PEOPLE_
+#define _PEOPLE_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,10 +12,7 @@
 #define num_in_D 340
 #define num_in_E 33
 
-
-
 //結構宣告
-typedef struct people* people_node;
 struct people{
     char ID[50];                                        //案例編號
     int age;
@@ -24,10 +23,11 @@ struct people{
     int remain_day;                             //累積隔離天數       
     enum{isolation,quarantine,release} state;
     /*<----------->*/    
-    people_node pre_inflect_people;                  //誰是傳染源
-    people_node next;                                //下一個輸入人員
-    people_node prev;
+    struct people *pre_inflect_people;                  //誰是傳染源
+    struct people *next;                                //下一個輸入人員
+    struct people *prev;
 };
+typedef struct people *people_node;
 
 struct city{                                            //城市
     int total_people;
@@ -76,3 +76,4 @@ todays_news()                   //按下next day command會有今日公告
 //(保留)   next_days()                     //好幾天都沒有確診
 block_days()                    //一樣有輸入確診，不過跳過公告(封鎖訊息)即沒有訊息
 move_paitient()                 //轉移確診人數(city間的轉換)
+#endif
