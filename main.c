@@ -23,10 +23,12 @@ int main(){
     rootID = malloc(sizeof(tree));
     rootID->data = NULL, rootID->left = NULL, rootID->right = NULL;
     
+    FILE* fp;
+    fp = fopen("data.txt","r");
+    
     //每天
     while(){
         // read data
-        // day4 +5
         // basic operation
         char instruct[10];
         while(scanf("%s",&instruct)){
