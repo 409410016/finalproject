@@ -72,6 +72,11 @@ int main(){
             else if(!strcmp(instruct,"SORT")) sort();
             else if(!strcmp(instruct,"END")) break;
         }
+        
+        // dice
+        for(int i=0;i<num_of_cities;i++)
+            dice(i);
+        
         // daily report
         printf("Today is: DAY %d\n",today);
         printf("Total inflect: %d",cities[0].inflected_people+cities[1].inflected_people+cities[2].inflected_people+cities[3].inflected_people+cities[4].inflected_people);
