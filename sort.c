@@ -1,7 +1,7 @@
 #include "people.h"
+#include <malloc.h>
 
-//參數為兩個樹的根節點
-void sort(ptrTree rootName, ptrTree rootID)
+void sort()
 {
     int No;
     printf("which data do you want to sort: ");
@@ -25,7 +25,6 @@ void traversal(ptrTree root)
         traversal(root->right);
     }
 }
-
 // front為當前節點(node)的上節點
 // node為當前節點，遞迴到最後為插入節點的位置
 // tmp指向新資料(people型態)的指標
@@ -65,11 +64,10 @@ void insert(ptrTree front, ptrTree node, struct people *tmp, char *element, int 
             insert(node, node->right, tmp, element, 1);
     }
 }
-
 // front為當前節點(node)的上節點
 // node為當前節點，遞迴到最後為欲刪除的節點的位置
 // name為欲刪除節點的name資料
-// big代表front和nowNode的關係 0代表front = node = root; -1代表node為front的左子節點; 1代表node為front的右子節點
+// big代表front和node的關係 0代表front = node = root; -1代表node為front的左子節點; 1代表node為front的右子節點
 void find_in_nameTree(ptrTree front, ptrTree nowNode, char *name, int big)
 {
     //無此資料
@@ -88,37 +86,34 @@ void find_in_nameTree(ptrTree front, ptrTree nowNode, char *name, int big)
         if (front == nowNode && (!(front->left && front->right)))
             rootName = (rootName->left) ? (rootName->left) : (rootName->right);
         else
-            delete (front, nowNode, big);
+            delete_in_tree (front, nowNode, big);
     }
 }
 
 //同find_in_nameTree 比對目標改為ID
-void find_in_IDTree(ptrTree front, ptrTree nowNode, char *ID, int big)
+void find_in_IDTree(ptrTree front, ptrTree nowNode, struct people* target, int big)
 {
     //無此資料
     if (nowNode == NULL)
         printf("invaild input\n");
     //目標資料小於當前節點
-    else if (strcmp(ID, nowNode->data->ID) < 0)
-        find_in_IDTree(nowNode, nowNode->left, ID, -1);
+    else if (strcmp(target -> ID, nowNode->data->ID) < 0)
+        find_in_IDTree(nowNode, nowNode->left, target, -1);
     //目標資料大於當前節點
-    else if (strcmp(ID, nowNode->data->ID) > 0)
-        find_in_IDTree(nowNode, nowNode->right, ID, 1);
+    else if (strcmp(target -> ID, nowNode->data->ID) > 0)
+        find_in_IDTree(nowNode, nowNode->right, target, 1);
     //目標資料等於當前節點
-    else if (strcmp(ID, nowNode->data->ID) == 0)
+    else if (strcmp(target -> ID, nowNode->data->ID) == 0)
     {
         //節點為根節點且只有一個子節點
         if (front == nowNode && (!(front->left && front->right)))
             rootID = (rootID->left) ? (rootID->left) : (rootID->right);
         else
-            delete (front, nowNode, big);
+            delete_in_tree (front, nowNode, big);
     }
 }
 
-//front為欲刪除節點的父節點
-//nowNode為欲刪除節點
-//big代表front和nowNode的關係
-void delete (ptrTree front, ptrTree nowNode, int big)
+void delete_in_tree (ptrTree front, ptrTree nowNode, int big)
 {
     //該節點為葉節點
     if (!nowNode->left && !nowNode->right)
@@ -172,7 +167,3 @@ void delete (ptrTree front, ptrTree nowNode, int big)
         }
     }
 }
-
-// insert在add中等已將資料加入linklist後再執行
-// delete_in_nameTree; delete_in_IDTree在delete中先刪除再將資料從linklist中刪除
-//在輸入要刪除的資料時，是否能要求同時輸入ID和name?
