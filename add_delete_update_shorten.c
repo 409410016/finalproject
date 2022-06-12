@@ -83,7 +83,8 @@ void add(){                 //新增人員、累加當天人數、結束時更�
     ptr->remain_day = 7;
     ptr->state = isolation;
     update_city();
-    insert();                                    //undo
+    insert(rootName,rootName,ptr->name,0);
+    insert(rootID,rootID,ptr->id,0);
     return;
 }
 
@@ -94,10 +95,12 @@ void delete(){                      // 搜尋並刪除任意人員   結束時�
     ptr = search_people();                        // 會回傳該名成員指標     //user  inupt 未完成
     qtr = ptr->pre_inflect_people;
     cities[ptr->reside].inflect--;
+    
     ptr->prev->next = ptr->next;                  //鏈上刪除
     ptr->next->prev = ptr->prev;
     temp = head;
     int check = 0;
+
     while(temp->next != NULL){
         if(strcmp(ptr->ID,temp->ID) == 0){
             check = 1;
@@ -118,7 +121,6 @@ void delete(){                      // 搜尋並刪除任意人員   結束時�
     }
     free(ptr);                                      //指標陣列要改為null
     update_city();
-    delete();                                //undo
     return;
 }
 
@@ -222,11 +224,12 @@ void add_user(){                                //1 Amy F 18 A (id)
     strcpy(ptr->name,name);
     ptr->age = stoi(age);
     strcpy(ptr->sex,sex);
-    ptr->reside = (*city);
-    cities[ptr->reside].inflect++;
+    ptr->city = *city;
+    cities[ptr->city-65].inflect++;
     ptr->remain_day = 7;
-    ptr->state = 0;
+    ptr->state = isolation;
     update_city();
-    insert();                                    //undo
+    insert(rootName,rootName,ptr->name,0);
+    insert(rootID,rootID,ptr->id,0);
     return;
 }
