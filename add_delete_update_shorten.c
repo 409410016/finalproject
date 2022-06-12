@@ -86,13 +86,13 @@ void add(){                 //新增人員、累加當天人數、結束時更�
     ptr->age = stoi(age);
     strcpy(ptr->sex,sex);
     ptr->city = *city;
-    cities[ptr->city - 65].inflect++;
+    cities[ptr->city - 65].inflected_people++;
     ptr->remain_day = 7;
     ptr->state = isolation;
     update_city();
     //insert節點進tree
-    insert(rootName,rootName,ptr ,ptr->name,0);
-    insert(rootID,rootID,ptr ,ptr->ID,0);
+    insert(rootName,rootName,ptr,ptr->name,0);
+    insert(rootID,rootID,ptr,ptr->ID,0);
     return;
 }
 
@@ -103,9 +103,9 @@ void delete(){                      // 搜尋並刪除任意人員   結束時�
     char *name;
     printf("Please input a name you want to delete : ");
     scanf("%s",name);
-    ptr = search_people_name(name);                        // 會回傳該名成員指標     //user  inupt 未完成
+    ptr = search_people_name(name);                        // 會回傳該名成員指標
     qtr = ptr->pre_inflect_people;
-    cities[ptr->city - 65].inflect--;
+    cities[ptr->city - 65].inflected_people--;
     //從tree中刪除
     find_in_nameTree(rootName, rootName, name, 0);    //要delete 掉的name
     find_in_IDTree(rootID, rootID, ptr, 0);          
@@ -232,11 +232,11 @@ void add_user(){                                //1 Amy F 18 A (id)
     ptr->age = stoi(age);
     strcpy(ptr->sex,sex);
     ptr->city = *city;
-    cities[ptr->city-65].inflect++;
+    cities[ptr->city-65].inflected_people++;
     ptr->remain_day = 7;
     ptr->state = isolation;
     update_city();
-    insert(rootName,rootName,ptr->name,0);
-    insert(rootID,rootID,ptr->ID,0);
+    insert(rootName,rootName,ptr,ptr->name,0);
+    insert(rootID,rootID,ptr,ptr->ID,0);
     return;
 }

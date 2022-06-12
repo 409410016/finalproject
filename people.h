@@ -33,7 +33,7 @@ struct city{                                            //城市
     int total_people;
     int inflected_people;
     float inflected_rate;
-}cities[num_of_cities];                                            //各城市
+}cities[num_of_cities];                                 //各城市
 
 // Binary Search Tree
 typedef struct tree *ptrTree;
@@ -58,19 +58,19 @@ void add();                           //加入people，同時增加city人數
 void add_user();
 void update_city();                   //更新rate
 void delete();                        //刪除people，同時減少city人數
-print_all()
 //sort part
 void insert(ptrTree, ptrTree, struct people *, char *, int); //插入node
 void find_in_nameTree(ptrTree, ptrTree, char *, int);        //找到愈刪除點在nameTree中的位置
 void find_in_IDTree(ptrTree, ptrTree, struct people*, int);          //找到愈刪除點在nameTree中的位置
-void delete (ptrTree, ptrTree, int);                         //刪除節點
+void delete_in_tree (ptrTree, ptrTree, int);                         //刪除節點
 void traversal(ptrTree);                                     //中序遍歷
 void sort();                                 //選擇其中一種tree並中序遍歷它
 
 struct people *search_people_name(const char ppl_name[]);           //people資料
 struct people *search_people_ID(const char ppl_ID[]);
-int search_city(const char ppl_city[])           //city裡面的東西
-FILE_I()
+int search_city(const char ppl_city[]);           //city裡面的東西
+
+/*FILE_I()
 FILE_O()
 
 //funny func
@@ -83,4 +83,5 @@ todays_news()                   //按下next day command會有今日公告
 //(保留)   next_days()                     //好幾天都沒有確診
 block_days()                    //一樣有輸入確診，不過跳過公告(封鎖訊息)即沒有訊息
 move_paitient()                 //轉移確診人數(city間的轉換)
+*/
 #endif
