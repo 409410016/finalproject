@@ -34,20 +34,18 @@ struct people *search_people_ID(const char ppl_ID[])
     }
 }
 
-struct people *search_city(const char ppl_city[])
+int search_city(const char ppl_city[])
 {
     // assume city is char array
-    struct city *cur = head;
-    while (cur != NULL)
+    for (int i = 0; i < num_of_cities++)
     {
-        if (strcmp(cur->city, ppl_city))
+        if (strcmp(cities[i].name, ppl_city))
         {
-            cur = cur->next;
+            continue;
         }
         else
         {
-            return cur;
-            //         printf("%s", cur->city);
+            return cities[i];
         }
     }
 }
