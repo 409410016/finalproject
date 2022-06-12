@@ -4,14 +4,34 @@ void search(){
     int No;
     char condition[50];
     printf("which data do you want to search: ");
-    printf("(1) name (2) ID\n");
+    printf("(1) name (2) ID (3) city\n");
     printf("data type number: ");
     scanf("%d", &No);
     scanf("%s",&condition);
-    if (No == 1)
-        search_people_name(condition);
-    else if (No == 2)
-        search_people_ID(condition);
+    
+    struct people *ptr;
+    int point;
+    if (No == 1){
+        ptr=search_people_name(condition);
+        printf("ID\tNAME\tSEX\tAGE\tCITY\tREMAIN_DAY\tSTATE\n");
+        printf("%s\t%s\t%c\t%d\t%c\t%d\t", ptr->ID, ptr->name, ptr->sex, ptr->age, ptr->city, ptr->remain_day);
+        if(ptr->state==0) printf("isolation\n");
+        else if(ptr->state==1) printf("quarantine\n");
+        else if(ptr->state==2) printf("release\n");
+    }
+    else if (No == 2){
+        ptr=search_people_ID(condition);
+        printf("ID\tNAME\tSEX\tAGE\tCITY\tREMAIN_DAY\tSTATE\n");
+        printf("%s\t%s\t%c\t%d\t%c\t%d\t", ptr->ID, ptr->name, ptr->sex, ptr->age, ptr->city, ptr->remain_day);
+        if(ptr->state==0) printf("isolation\n");
+        else if(ptr->state==1) printf("quarantine\n");
+        else if(ptr->state==2) printf("release\n");
+    }
+    else if(No == 3){
+        point=search_city(condition);
+        printf("Total\tinflect\tinflect rate\n");
+        printf("%d\t%d\t%f\n", cities[i].total_people, cities[i].inflected_people, cities[i].inflected_rate);
+    }
 }
 
 struct people *search_people_name(const char ppl_name[])
