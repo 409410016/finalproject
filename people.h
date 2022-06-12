@@ -6,11 +6,11 @@
 #include <string.h>
 
 #define num_of_cities 5
-#define num_in_A 50
-#define num_in_B 109
-#define num_in_C 67
+#define num_in_A 500
+#define num_in_B 290
+#define num_in_C 670
 #define num_in_D 340
-#define num_in_E 33
+#define num_in_E 330
 
 //結構宣告
 struct people{
