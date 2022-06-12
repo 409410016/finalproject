@@ -25,17 +25,23 @@ void print_all(){
     // 人員基本資料
     struct people *cur;
     cur = head->next;
+    printf("%s\t%s\t%d\t%d\n", cur->ID, cur->name, cur->sex, cur->age, cur->cuty, cur->remain_day);
     while (cur != NULL) {
+        printf("%s\t%s\t%c\t%d\t%c\t%d\t", cur->ID, cur->name, cur->sex, cur->age, cur->city, cur->remain_day);
+        if(cur->state==0) printf("isolation\n");
+        else if(cur->state==1) printf("quarantine\n");
+        else if(cur->state==2) printf("release\n");
         cur = cur->next;
     }
     printf("\n");
     
     // 城市資料
-    printf("City\tTotal\tinflect\tinflect rate\tdeath\tdeath rate\n");
-    for(int i=0;i<num_of_cities;i++){
-        print_city(i);
-    }
-    printf("\n");
+    printf("City\tTotal\tinflect\tinflect rate\n");
+    printf("A\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflect, cities[i].inflected_rate);
+    printf("B\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflect, cities[i].inflected_rate);
+    printf("C\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflect, cities[i].inflected_rate);
+    printf("D\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflect, cities[i].inflected_rate);
+    printf("E\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflect, cities[i].inflected_rate);
 }
 
 int main(){
@@ -84,19 +90,3 @@ void search(){
     search_city(); // 指標
     print_city(); // 傳入指標
 }
-
-void print_people(){
-    // 傳入指標，印出
-    printf("%s\t%s\t%d\t%d\n", cur->ID, cur->name, cur->age, cur->remain_day);
-}
-
-void print_city(){
-    // 傳入指標，印出
-    printf("%d\t%d\t%d\t%f\t%d\t%f\n", i, cities[i].total_people, cities[i].inflect, cities[i].inflected_rate, cities[i].death, cities[i].death_rate);
-}
-
-void chain(){
-    // 傳入指標
-    // 搜尋傳播鍊，印出
-}
-
