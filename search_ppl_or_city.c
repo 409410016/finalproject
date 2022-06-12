@@ -1,9 +1,8 @@
-#include"people.h"
+#include "main.c"
 
-
-struct people *search_people_name(struct people *start, const char ppl_name[])
+struct people *search_people_name(const char ppl_name[])
 {
-    struct people *cur = *start;
+    struct people *cur = head;
     while (cur != NULL)
     {
         if (strcmp(cur->name, ppl_name)) // wrong ppl
@@ -13,14 +12,14 @@ struct people *search_people_name(struct people *start, const char ppl_name[])
         else //已經找到people的地址了。
         {
             return cur;
-//             print("%s", cur->name);
+            //             print("%s", cur->name);
         }
     }
 }
 
-struct people *search_people_name(struct people *start, const char ppl_ID[])
+struct people *search_people_ID(const char ppl_ID[])
 {
-    struct people *cur = *start;
+    struct people *cur = head;
     while (cur != NULL)
     {
         if (strcmp(cur->name, ppl_ID)) // wrong ppl
@@ -30,24 +29,25 @@ struct people *search_people_name(struct people *start, const char ppl_ID[])
         else //已經找到people的地址了。
         {
             return cur;
-//             print("%s", cur->name);
+            //             print("%s", cur->name);
         }
     }
 }
 
-struct people * search_city(struct city **start, const char ppl_city[])
+struct people *search_city(const char ppl_city[])
 {
     // assume city is char array
-    struct city *cur = *start;
-    while (cur != NULL){
+    struct city *cur = head;
+    while (cur != NULL)
+    {
         if (strcmp(cur->city, ppl_city))
         {
             cur = cur->next;
         }
         else
-        {   
+        {
             return cur;
-    //         printf("%s", cur->city);
+            //         printf("%s", cur->city);
         }
-   }
+    }
 }
