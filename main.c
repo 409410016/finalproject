@@ -12,20 +12,25 @@ void init(){
     cities[3].total_people = num_in_D;
     cities[4].total_people = num_in_E;
     for(int i=0;i<num_of_cities;i++){
-        cities[i].inflect = 0;
+        cities[i].inflected_people = 0;
         cities[i].inflected_rate = 0;
     }
     // struct head
     head = (struct people*)malloc(sizeof(struct people));
     head->next = NULL;
     return;
+    //初始化根節點
+    rootName = malloc(sizeof(tree));
+    rootName->data = NULL, rootName->left = NULL, rootName->right = NULL;
+    rootID = malloc(sizeof(tree));
+    rootID->data = NULL, rootID->left = NULL, rootID->right = NULL;
 }
 
 void print_all(){
     // 人員基本資料
     struct people *cur;
     cur = head->next;
-    printf("%s\t%s\t%d\t%d\n", cur->ID, cur->name, cur->sex, cur->age, cur->cuty, cur->remain_day);
+    printf("ID\tNAME\tSEX\tAGE\tCITY\tREMAIN_DAY\n");
     while (cur != NULL) {
         printf("%s\t%s\t%c\t%d\t%c\t%d\t", cur->ID, cur->name, cur->sex, cur->age, cur->city, cur->remain_day);
         if(cur->state==0) printf("isolation\n");
@@ -37,29 +42,26 @@ void print_all(){
     
     // 城市資料
     printf("City\tTotal\tinflect\tinflect rate\n");
-    printf("A\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflect, cities[i].inflected_rate);
-    printf("B\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflect, cities[i].inflected_rate);
-    printf("C\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflect, cities[i].inflected_rate);
-    printf("D\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflect, cities[i].inflected_rate);
-    printf("E\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflect, cities[i].inflected_rate);
+    printf("A\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflected_people, cities[i].inflected_rate);
+    printf("B\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflected_people, cities[i].inflected_rate);
+    printf("C\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflected_people, cities[i].inflected_rate);
+    printf("D\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflected_people, cities[i].inflected_rate);
+    printf("E\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflected_people, cities[i].inflected_rate);
 }
 
 int main(){
     
-    init(); // initialized and input city info
-    
-    //初始化根節點
-    rootName = malloc(sizeof(tree));
-    rootName->data = NULL, rootName->left = NULL, rootName->right = NULL;
-    rootID = malloc(sizeof(tree));
-    rootID->data = NULL, rootID->left = NULL, rootID->right = NULL;
-    
-    FILE* fp;
+    init(); // initialized and city info
     fp = fopen("data.txt","r");
+    today = 1;
     
     //每天
-    while(){
+    while(1){
         // read data
+        int new;
+        scanf("%d\n",&new);
+        while(new--) add();
+
         // basic operation
         char instruct[10];
         while(scanf("%s",&instruct)){
@@ -71,8 +73,10 @@ int main(){
             else if(!strcmp(instruct,"END")) break;
         }
         // daily report
+
+
         // release
-        release();
+        release(1);
     }
 
     return 0;
