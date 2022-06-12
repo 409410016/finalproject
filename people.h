@@ -73,10 +73,10 @@ int search_city(const char ppl_city[]);           //city裡面的東西
 FILE_O()
 
 //funny func
-clear()                         //清零(改公告)
+void clear(const char *ppl_name);
 shorten_remain_day()            //縮短隔天數(每天)
 fined()                         //300萬罰款
-apply_for_WHO()                 //申請加入世衛
+void protest();
 medicine()                      //讓people痊癒(修改資料)
 todays_news()                   //按下next day command會有今日公告
 //(保留)   next_days()                     //好幾天都沒有確診
