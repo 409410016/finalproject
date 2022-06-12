@@ -1,6 +1,36 @@
 #include"people.h" 
 #include <time.h>
 
+void dice(int city){
+    char c;
+    if(city==0) c='A';
+    else if(city==1) c='B';
+    else if(city==2) c='C';
+    else if(city==3) c='D';
+    else if(city==4) c='E';
+    
+    srand(time(NULL));
+    int dice = rand()%6;
+    switch(dice){
+        case 0:
+            break;
+        case 1:
+            clear(c);
+            break;
+        case 2:
+            block_days(c);
+            break;
+        case 3:
+            immigrate(c);
+            break;
+        case 4:
+            medicine(c);
+            break;
+        case 5:
+            protest();
+            break;
+    }
+}
 
 void medecine( const char *ppl_name)
 {
