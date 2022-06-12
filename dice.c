@@ -38,16 +38,16 @@ void protest(){
     int dice = rand()%5;
     switch(dice){
         case 0:
-            printf("sentense1\n");
+            printf("We did a great job! Keep working!\n");
             break;
         case 1:
-            printf("sentense2\n");
+            printf("City A is totally a mess !!\n");
             break;
         case 2:
-            printf("sentense3\n");
+            printf("We want to attend WTO to have more resources to against the virus.\n");
             break;
         case 3:
-            printf("sentense4\n");
+            printf("Whom spread fake news will be fined 300million dollars\n");
             break;
         case 4:
             printf("sentense5\n");
