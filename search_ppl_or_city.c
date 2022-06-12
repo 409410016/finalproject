@@ -18,23 +18,19 @@ struct people *search_people_name(struct people *start, const char ppl_name[])
     }
 }
 
-
-struct people *search_people_ID(struct people *start, const int ppl_id)
+struct people *search_people_name(struct people *start, const char ppl_ID[])
 {
     struct people *cur = *start;
-    
-	char num[5]; 
-	sprintf(num, "%d", ppl_id);   
-    
     while (cur != NULL)
     {
-        if (strcmp(cur->name, num)) // wrong ppl
+        if (strcmp(cur->name, ppl_ID)) // wrong ppl
         {
             cur = cur->next;
         }
         else //已經找到people的地址了。
         {
             return cur;
+//             print("%s", cur->name);
         }
     }
 }
