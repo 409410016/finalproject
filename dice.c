@@ -1,10 +1,10 @@
 #include"people.h" 
 
 
-void medecine(struct people **start, const char *ppl_name)
+void medecine( const char *ppl_name)
 {
     
-    struct people *cur = *start;
+    struct people *cur =head;
     if (strcmp(cur->city, ppl_name))
     {
         cur = cur->next;
