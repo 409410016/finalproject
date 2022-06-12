@@ -74,6 +74,7 @@ int search_city(const char ppl_city[]);           //city裡面的東西
 FILE_O()
 
 //funny func
+void dice(int city);
 void clear(const char *ppl_name);
 shorten_remain_day()            //縮短隔天數(每天)
 fined()                         //300萬罰款
