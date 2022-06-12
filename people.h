@@ -1,28 +1,39 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-char states[3]={"isolation","quarantine","release"};
+#define num_of_cities 5
+#define num_in_A 50
+#define num_in_B 109
+#define num_in_C 67
+#define num_in_D 340
+#define num_in_E 33
+
+
+
 //結構宣告
-typedef struct people *people_node;
+typedef struct people* people_node;
 struct people{
     char ID[50];                                        //案例編號
     int age;
     char sex;                                           //性別
+    char city;
     char name[50];
-    int remain_day;                                     //累積隔離天數
-    enum{taipei,kauo,tainai....}c;
-    struct people *pre_inflect_people;                  //誰是傳染源
-    struct people *next;                                //下一個輸入人員
-    struct people *prev;
-    int state;                                          //狀態
+    /*<----------->*/
+    int remain_day;                             //累積隔離天數       
+    enum{isolation,quarantine,release} state;
+    /*<----------->*/    
+    people_node pre_inflect_people;                  //誰是傳染源
+    people_node next;                                //下一個輸入人員
+    people_node prev;
 };
 
 struct city{                                            //城市
     int total_people;
     int inflected_people;
     float inflected_rate;
-}cities[5];                                            //各城市
+}cities[num_of_cities];                                            //各城市
 
 // Binary Search Tree
 typedef struct tree *ptrTree;
@@ -32,13 +43,15 @@ typedef struct tree
     ptrTree left;
     ptrTree right;
 } tree;
-
-//變數宣告
 ptrTree rootName;
 ptrTree rootID;
+
+//變數宣告
 int num_of_people; //目前人數
+int today;
 FILE *fp;
 people_node head;
+char states[3][11]={"isolation","quarantine","release"};
 
 //basic func()
 void add();                           //加入people，同時增加city人數

@@ -1,60 +1,8 @@
-#include <people.h>
+#include"people.h"
 #include"add_delete_update_shorten.c"
 #include"sort.c"
-#include"medicine.c"
+#include"search_ppl_or_city.c"
 #include"dice.c"
-
-#define num_of_cities 5
-#define num_in_A 50
-#define num_in_B 109
-#define num_in_C 67
-#define num_in_D 340
-#define num_in_E 33
-
-int num_of_people; //目前人數
-int today; //今天第幾天
-
-typedef enum city City;
-enum city{A,B,C,D,E};
-typedef enum state State;
-enum state{};
-
-struct people{
-    /*<----------->*/
-    char ID[50];                            
-    char name[50];
-    char sex;
-    int age;
-    char city;
-    /*<----------->*/
-    int state;
-    int remain_day;                         
-    enum State{A,B,C,D,E}state;
-    /*<----------->*/
-    struct people *pre_inflect_people;     
-    struct people *prev;
-    struct people *next;                    
-};
-
-//城市
-struct city{
-    int total_people;           // 總人口
-    int inflect;                // 感染人數
-    double inflected_rate;      // 感染率，死亡率
-}cities[num_of_cities]; 
-
-struct people *head;
-
-// Binary Search Tree
-typedef struct tree *ptrTree;
-typedef struct tree
-{
-    struct people* data;
-    ptrTree left;
-    ptrTree right;
-} tree;
-ptrTree rootName;
-ptrTree rootID;
 
 void init();
 void print_all();
