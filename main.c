@@ -74,7 +74,10 @@ int main(){
         }
         // daily report
         printf("Today is: DAY %d\n",today);
-        printf("Total inflect: %d",cities[0].total_people+cities[1].total_people+cities[2].total_people+cities[3].total_people+cities[4].total_people)
+        printf("Total inflect: %d",cities[0].inflected_people+cities[1].inflected_people+cities[2].inflected_people+cities[3].inflected_people+cities[4].inflected_people);
+        printf("A\tB\tC\tD\tE\n");
+        printf("%d\t%d\t%d\t%d\t%d\n",cities[0].inflected_people,cities[1].inflected_people,cities[2].inflected_people,cities[3].inflected_people,cities[4].inflected_people);
+        printf("%f\t%f\t%f\t%f\t%f\n",cities[0].inflected_rate,cities[1].inflected_rate,cities[2].inflected_rate,cities[3].inflected_rate,cities[4].inflected_rate);
 
         // release
         release(1);
