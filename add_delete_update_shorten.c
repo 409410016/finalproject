@@ -1,12 +1,6 @@
 #include"people.h"
 #include<malloc.h>
 
-//qusetion: input file name?data.txt 
-
-//work to do:create pointer array(delete->NULL)
-
-//insert function要加入
-
 void update_city(){
     for(int i=0;i<5;i++){
         cities[i].inflected_rate = cities[i].inflected_people/cities[i].total_people;
@@ -14,7 +8,7 @@ void update_city(){
     return;
 }
 
-void add(){                 //新增人員、累加當天人數、結束時更新city資料(1 Amy F 18 A (id))             指標陣列要加入值
+void add(){                 //新增人員、累加當天人數、結束時更新city資料(1 Amy F 18 A (id))
     char temp[1024];
     fgets(temp,1024,fp);              //input file
     char *id,*name,*age,*sex,*city,*chop,*pre_id;
@@ -133,12 +127,13 @@ void delete(){                      // 搜尋並刪除任意人員   結束時�
             temp->pre_inflect_people = qtr;
         }
     }
-    free(ptr);                                      //指標陣列要改為null
+    free(ptr);
     update_city();
     return;
 }
 
 void release(int day){
+    today++;
     people_node ptr;
     ptr = head->next;
     while(ptr->next != NULL){
