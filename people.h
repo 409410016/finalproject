@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-char states[4]={"隔離","居家","解隔"};
+
+char states[3]={"isolation","quarantine","release"};
 //結構宣告
 typedef struct people *people_node;
 struct people{
@@ -13,6 +14,7 @@ struct people{
     enum{taipei,kauo,tainai....}c;
     struct people *pre_inflect_people;                  //誰是傳染源
     struct people *next;                                //下一個輸入人員
+    struct people *prev;
     int state;                                          //狀態
 };
 
@@ -20,11 +22,9 @@ struct city{                                            //城市
     int total_people;
     int inflected_people;
     float inflected_rate;
-    int death;
-    double death_rate;
 }cities[5];                                            //各城市
 
-/ Binary Search Tree
+// Binary Search Tree
 typedef struct tree *ptrTree;
 typedef struct tree
 {
@@ -37,12 +37,13 @@ typedef struct tree
 ptrTree rootName;
 ptrTree rootID;
 int num_of_people; //目前人數
+FILE *fp;
 
 //basic func()
-add()                           //加入people，同時增加city人數
-city_update()                   //更新rate
-delete()                        //刪除people，同時減少city人數
-shorten_remain_day_iter()       //更新people隔離天數且檢查state
+void add();                           //加入people，同時增加city人數
+void add_user();
+void city_update();                   //更新rate
+void delete();                        //刪除people，同時減少city人數
 print_all()
 sort_ID()
 sort_name()
