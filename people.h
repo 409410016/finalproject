@@ -38,11 +38,12 @@ ptrTree rootName;
 ptrTree rootID;
 int num_of_people; //目前人數
 FILE *fp;
+people_node head;
 
 //basic func()
 void add();                           //加入people，同時增加city人數
 void add_user();
-void city_update();                   //更新rate
+void update_city();                   //更新rate
 void delete();                        //刪除people，同時減少city人數
 print_all()
 sort_ID()

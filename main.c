@@ -1,4 +1,9 @@
 #include<people.h>
+#include"add_delete_update_shorten.c"
+#include"sort.c"
+#include"medicine.c"
+#include"dice.c"
+
 #define num_of_cities 5
 
 int num_of_people; //目前人數
@@ -26,8 +31,8 @@ struct people{
 //城市
 struct city{
     int total_people;                       // 總人口
-    int inflect, death;                     // 感染人數，死亡人數?
-    double inflected_rate, death_rate;      // 感染率，死亡率
+    int inflect;                     // 感染人數，死亡人數?
+    double inflected_rate;      // 感染率，死亡率
 }cities[num_of_cities]; 
 
 struct people *head;
@@ -94,9 +99,7 @@ void init(){
     for(int i=0;i<num_of_cities;i++){
         scanf("%d",&cities[i].total_people);
         cities[i].inflect = 0;
-        cities[i].death = 0;
         cities[i].inflected_rate = 0;
-        cities[i].death_rate = 0;
     }
     // struct head
     head = (struct people*)malloc(sizeof(struct people));
