@@ -59,8 +59,14 @@ void add_user();
 void update_city();                   //更新rate
 void delete();                        //刪除people，同時減少city人數
 print_all()
-sort_ID()
-sort_name()
+//sort part
+void insert(ptrTree, ptrTree, struct people *, char *, int); //插入node
+void find_in_nameTree(ptrTree, ptrTree, char *, int);        //找到愈刪除點在nameTree中的位置
+void find_in_IDTree(ptrTree, ptrTree, struct people*, int);          //找到愈刪除點在nameTree中的位置
+void delete (ptrTree, ptrTree, int);                         //刪除節點
+void traversal(ptrTree);                                     //中序遍歷
+void sort();                                 //選擇其中一種tree並中序遍歷它
+
 struct people *search_people_name(const char ppl_name[]);           //people資料
 struct people *search_people_ID(const char ppl_ID[]);
 int search_city(const char ppl_city[])           //city裡面的東西
