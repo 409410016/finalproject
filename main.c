@@ -73,24 +73,12 @@ int main(){
             else if(!strcmp(instruct,"END")) break;
         }
         // daily report
-
+        printf("Today is: DAY %d\n",today);
+        printf("Total inflect: %d",cities[0].total_people+cities[1].total_people+cities[2].total_people+cities[3].total_people+cities[4].total_people)
 
         // release
         release(1);
     }
 
     return 0;
-}
-
-
-
-
-void search(){
-    // 二選一
-    search_people(); // 指標
-    print_people(); // 傳入指標
-    chain(); // 傳入指標，尋找傳播鏈
-    // 
-    search_city(); // 指標
-    print_city(); // 傳入指標
 }
