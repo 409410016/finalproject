@@ -63,7 +63,7 @@ sort_ID()
 sort_name()
 struct people *search_people_name(const char ppl_name[]);           //people資料
 struct people *search_people_ID(const char ppl_ID[]);
-struct people *search_city(const char ppl_city[]);                 //city裡面的東西
+int search_city(const char ppl_city[])           //city裡面的東西
 FILE_I()
 FILE_O()
 
