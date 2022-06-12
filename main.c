@@ -14,18 +14,21 @@ enum city{A,B,C,D,E};
 typedef enum state State;
 enum state{};
 
-// 1 Amy F 18 A(city) //sex
 struct people{
-    char ID[50];                            //案例編號
+    /*<----------->*/
+    char ID[50];                            
     char name[50];
     char sex;
-    int state;
     int age;
-    int remain_day;                         //累積隔離天數
-    enum City{A,B,C,D,E}reside;             //所在城市
-    struct people *pre_inflect_people;      //誰是傳染源
+    char city;
+    /*<----------->*/
+    int state;
+    int remain_day;                         
+    enum State{A,B,C,D,E}state;
+    /*<----------->*/
+    struct people *pre_inflect_people;     
     struct people *prev;
-    struct people *next;                    //下一個輸入人員
+    struct people *next;                    
 };
 
 //城市
@@ -49,8 +52,6 @@ ptrTree rootName;
 ptrTree rootID;
 
 void init();
-void add();
-void delete();
 void print_all();
 int* search_people();
 int* search_city();
@@ -58,9 +59,6 @@ void search();
 void chain();
 void print_people(*);
 void print_city(*);
-void sort();
-void release();
-void city_update();
 
 int main(){
     
@@ -106,20 +104,6 @@ void init(){
     head->next = NULL;
 }
 
-void add(){
-    // 新增人員
-    // 累加當天人數
-    // 結束時更新city資料
-    update_city(); 
-}
-
-void delete(){
-    // 搜尋並刪除任意人員
-    search_people(); // 會回傳該名成員指標
-    // 結束時更新city資料
-    update_city(); 
-}
-
 void print_all(){
     // 人員基本資料
     struct people *cur;
@@ -147,14 +131,6 @@ void search(){
     print_city(); // 傳入指標
 }
 
-struct people *search_people(){
-    // 回傳該名成員指標
-}
-
-struct people *search_people(){
-    // 回傳該名成員指標
-}
-
 void print_people(){
     // 傳入指標，印出
     printf("%s\t%s\t%d\t%d\n", cur->ID, cur->name, cur->age, cur->remain_day);
@@ -168,14 +144,5 @@ void print_city(){
 void chain(){
     // 傳入指標
     // 搜尋傳播鍊，印出
-}
-
-void sort(){
-    // 
-}
-
-void release(){
-    // 縮短天數-1
-    // 如果額滿，delete
 }
 
