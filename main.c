@@ -4,14 +4,39 @@
 #include"search_ppl_or_city.c"
 #include"dice.c"
 
-void init();
-void print_all();
-int* search_people();
-int* search_city();
-void search();
-void chain();
-void print_people(*);
-void print_city(*);
+void init(){
+    // build city and initialized
+    cities[0].total_people = num_in_A;
+    cities[1].total_people = num_in_B;
+    cities[2].total_people = num_in_C;
+    cities[3].total_people = num_in_D;
+    cities[4].total_people = num_in_E;
+    for(int i=0;i<num_of_cities;i++){
+        cities[i].inflect = 0;
+        cities[i].inflected_rate = 0;
+    }
+    // struct head
+    head = (struct people*)malloc(sizeof(struct people));
+    head->next = NULL;
+    return;
+}
+
+void print_all(){
+    // 人員基本資料
+    struct people *cur;
+    cur = head->next;
+    while (cur != NULL) {
+        cur = cur->next;
+    }
+    printf("\n");
+    
+    // 城市資料
+    printf("City\tTotal\tinflect\tinflect rate\tdeath\tdeath rate\n");
+    for(int i=0;i<num_of_cities;i++){
+        print_city(i);
+    }
+    printf("\n");
+}
 
 int main(){
     
@@ -47,38 +72,8 @@ int main(){
     return 0;
 }
 
-void init(){
-    // build city and initialized
-    cities[0].total_people = num_in_A;
-    cities[1].total_people = num_in_B;
-    cities[2].total_people = num_in_C;
-    cities[3].total_people = num_in_D;
-    cities[4].total_people = num_in_E;
-    for(int i=0;i<num_of_cities;i++){
-        cities[i].inflect = 0;
-        cities[i].inflected_rate = 0;
-    }
-    // struct head
-    head = (struct people*)malloc(sizeof(struct people));
-    head->next = NULL;
-}
 
-void print_all(){
-    // 人員基本資料
-    struct people *cur;
-    cur = head->next;
-    while (cur != NULL) {
-        cur = cur->next;
-    }
-    printf("\n");
-    
-    // 城市資料
-    printf("City\tTotal\tinflect\tinflect rate\tdeath\tdeath rate\n");
-    for(int i=0;i<num_of_cities;i++){
-        print_city(i);
-    }
-    printf("\n");
-}
+
 
 void search(){
     // 二選一

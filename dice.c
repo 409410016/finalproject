@@ -1,4 +1,4 @@
-#include<main.c>//i'm not sure 
+#include"people.h" 
 
 
 void medecine(struct people **start, const char *ppl_name)

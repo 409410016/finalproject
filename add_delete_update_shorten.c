@@ -7,6 +7,13 @@
 
 //insert function要加入
 
+void update_city(){
+    for(int i=0;i<5;i++){
+        cities[i].inflected_rate = cities[i].inflected_people/cities[i].total_people;
+    }
+    return;
+}
+
 void add(){                 //新增人員、累加當天人數、結束時更新city資料(1 Amy F 18 A (id))             指標陣列要加入值
     char temp[1024];
     fgets(temp,1024,fp);              //input file
@@ -85,7 +92,7 @@ void add(){                 //新增人員、累加當天人數、結束時更�
     update_city();
     //insert節點進tree
     insert(rootName,rootName,ptr ,ptr->name,0);
-    insert(rootID,rootID,ptr ,ptr->id,0);
+    insert(rootID,rootID,ptr ,ptr->ID,0);
     return;
 }
 
@@ -93,13 +100,15 @@ void add(){                 //新增人員、累加當天人數、結束時更�
 
 void delete(){                      // 搜尋並刪除任意人員   結束時更新city資料
     people_node ptr,temp,qtr;
-    ptr = search_people();                        // 會回傳該名成員指標     //user  inupt 未完成
+    char *name;
+    printf("Please input a name you want to delete : ");
+    scanf("%s",name);
+    ptr = search_people_name(name);                        // 會回傳該名成員指標     //user  inupt 未完成
     qtr = ptr->pre_inflect_people;
-    cities[ptr->reside].inflect--;
+    cities[ptr->city - 65].inflect--;
     //從tree中刪除
-    find_in_nameTree(rootName, rootName, "name", 0);    //要delete 掉的name
-    struct people* target = search_people_name("name"); //要delete 掉的name
-    find_in_IDTree(rootID, rootID, target, 0);          
+    find_in_nameTree(rootName, rootName, name, 0);    //要delete 掉的name
+    find_in_IDTree(rootID, rootID, ptr, 0);          
     
     ptr->prev->next = ptr->next;                  //鏈上刪除
     ptr->next->prev = ptr->prev;
@@ -129,13 +138,6 @@ void delete(){                      // 搜尋並刪除任意人員   結束時�
     return;
 }
 
-void update_city(){
-    for(int i=0;i<5;i++){
-        cities[i].inflected_rate = cities[i].inflected_people/cities[i].total_people;
-    }
-    return;
-}
-
 void release(int day){
     people_node ptr;
     ptr = head->next;
@@ -148,7 +150,7 @@ void release(int day){
         }else if(ptr->remain_day == day && ptr->state == 1){
             ptr->remain_day = -1;
             ptr->state = 2;
-            cities[ptr->c].inflected_people--;
+            cities[ptr->city - 65].inflected_people--;
             update_city();
         }
     }
@@ -235,6 +237,6 @@ void add_user(){                                //1 Amy F 18 A (id)
     ptr->state = isolation;
     update_city();
     insert(rootName,rootName,ptr->name,0);
-    insert(rootID,rootID,ptr->id,0);
+    insert(rootID,rootID,ptr->ID,0);
     return;
 }
