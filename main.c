@@ -30,7 +30,7 @@ void print_all(){
     // 人員基本資料
     struct people *cur;
     cur = head->next;
-    printf("ID\tNAME\tSEX\tAGE\tCITY\tREMAIN_DAY\n");
+    printf("ID\tNAME\tSEX\tAGE\tCITY\tREMAIN_DAY\tSTATE\n");
     while (cur != NULL) {
         printf("%s\t%s\t%c\t%d\t%c\t%d\t", cur->ID, cur->name, cur->sex, cur->age, cur->city, cur->remain_day);
         if(cur->state==0) printf("isolation\n");
