@@ -50,7 +50,7 @@ void protest(){
             printf("Whom spread fake news will be fined 300million dollars\n");
             break;
         case 4:
-            printf("sentense5\n");
+            printf("Humble, humble, more humble\n");
             break;
     }
 }
