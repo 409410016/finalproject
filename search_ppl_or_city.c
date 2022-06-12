@@ -61,15 +61,15 @@ struct people *search_people_ID(const char ppl_ID[])
 int search_city(const char ppl_city[])
 {
     // assume city is char array
-    for (int i = 0; i < num_of_cities++)
+    for (int i = 0; i < num_of_cities; i++)
     {
-        if (strcmp(cities[i].name, ppl_city))
+        if (cities[i] != (ppl_city - 65))
         {
             continue;
         }
         else
         {
-            return cities[i];
+            return i; //回傳該城市所屬數字
         }
     }
 }
