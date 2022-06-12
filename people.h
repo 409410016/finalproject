@@ -47,7 +47,6 @@ ptrTree rootName;
 ptrTree rootID;
 
 //變數宣告
-int num_of_people; //目前人數
 int today;
 FILE *fp;
 people_node head;
