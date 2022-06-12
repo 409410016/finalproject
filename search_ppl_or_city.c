@@ -1,5 +1,19 @@
 #include "people.h"
 
+void search(){
+    int No;
+    char condition[50];
+    printf("which data do you want to search: ");
+    printf("(1) name (2) ID\n");
+    printf("data type number: ");
+    scanf("%d", &No);
+    scanf("%s",&condition);
+    if (No == 1)
+        search_people_name(condition);
+    else if (No == 2)
+        search_people_ID(condition);
+}
+
 struct people *search_people_name(const char ppl_name[])
 {
     struct people *cur = *head;
