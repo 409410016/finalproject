@@ -1,4 +1,4 @@
-#include ""
+#include "people.h"
 
 struct people *search_people_name(const char ppl_name[])
 {
