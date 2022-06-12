@@ -83,8 +83,9 @@ void add(){                 //新增人員、累加當天人數、結束時更�
     ptr->remain_day = 7;
     ptr->state = isolation;
     update_city();
-    insert(rootName,rootName,ptr->name,0);
-    insert(rootID,rootID,ptr->id,0);
+    //insert節點進tree
+    insert(rootName,rootName,ptr ,ptr->name,0);
+    insert(rootID,rootID,ptr ,ptr->id,0);
     return;
 }
 
@@ -95,6 +96,10 @@ void delete(){                      // 搜尋並刪除任意人員   結束時�
     ptr = search_people();                        // 會回傳該名成員指標     //user  inupt 未完成
     qtr = ptr->pre_inflect_people;
     cities[ptr->reside].inflect--;
+    //從tree中刪除
+    find_in_nameTree(rootName, rootName, "name", 0);    //要delete 掉的name
+    struct people* target = search_people_name("name"); //要delete 掉的name
+    find_in_IDTree(rootID, rootID, target, 0);          
     
     ptr->prev->next = ptr->next;                  //鏈上刪除
     ptr->next->prev = ptr->prev;
