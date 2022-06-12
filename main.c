@@ -1,10 +1,15 @@
-#include<people.h>
+#include <people.h>
 #include"add_delete_update_shorten.c"
 #include"sort.c"
 #include"medicine.c"
 #include"dice.c"
 
 #define num_of_cities 5
+#define num_in_A 50
+#define num_in_B 109
+#define num_in_C 67
+#define num_in_D 340
+#define num_in_E 33
 
 int num_of_people; //目前人數
 int today; //今天第幾天
@@ -33,8 +38,8 @@ struct people{
 
 //城市
 struct city{
-    int total_people;                       // 總人口
-    int inflect;                     // 感染人數，死亡人數?
+    int total_people;           // 總人口
+    int inflect;                // 感染人數
     double inflected_rate;      // 感染率，死亡率
 }cities[num_of_cities]; 
 
@@ -94,8 +99,12 @@ int main(){
 
 void init(){
     // build city and initialized
+    cities[0].total_people = num_in_A;
+    cities[1].total_people = num_in_B;
+    cities[2].total_people = num_in_C;
+    cities[3].total_people = num_in_D;
+    cities[4].total_people = num_in_E;
     for(int i=0;i<num_of_cities;i++){
-        scanf("%d",&cities[i].total_people);
         cities[i].inflect = 0;
         cities[i].inflected_rate = 0;
     }
