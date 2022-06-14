@@ -26,39 +26,28 @@ operation(工作內容):
 
 //data structure
 
-people{
+struct people{
     char ID[50];                                        //案例編號
     int age;
     char sex;                                           //性別
+    char city;
     char name[50];
-    int remain_day;                                     //累積隔離天數
-    enum{taipei,kauo,tainai....}c;                      //在哪個城市
+    /*<----------->*/
+    int remain_day;                             //累積隔離天數       
+    enum{isolation,quarantine,release} state;
+    /*<----------->*/    
     struct people *pre_inflect_people;                  //誰是傳染源
     struct people *next;                                //下一個輸入人員
+    struct people *prev;
 };
 
-city{                                            //城市
+struct city{                                            //城市
     int total_people;
     int inflected_people;
     float inflected_rate;
-    int death;
-    double death_rate;
-}cities[5];                                            //各城市
+}cities[num_of_cities];                                 //各城市
 
-
-jobs:(自行認領)
-print_all()
-//funny func
-clear()
-shorten_remain_day()
-fined()
-apply_for_WHO()
-//(保留)   next_days()
-block_days()
-
-basic.c  sort.c  search.c
-
-王 : add(){順便計算總人數} delete() city_update() shorten_remain_day_iter()
+王 : add(){順便計算總人數} delete() city_update()  release()
 
 丁丁 : sort_ID() sort_name() move_paitient()
 

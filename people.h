@@ -22,7 +22,7 @@ struct people{
     char name[50];
     /*<----------->*/
     int remain_day;                             //累積隔離天數       
-    enum{isolation,quarantine,release} state;
+    enum{isolation,quarantine,releases} state;
     /*<----------->*/    
     struct people *pre_inflect_people;                  //誰是傳染源
     struct people *next;                                //下一個輸入人員
@@ -58,6 +58,7 @@ void add();                           //加入people，同時增加city人數
 void add_user();
 void update_city();                   //更新rate
 void delete();                        //刪除people，同時減少city人數
+void release(int);
 //sort part
 void insert(ptrTree, ptrTree, struct people *, char *, int); //插入node
 void find_in_nameTree(ptrTree, ptrTree, char *, int);        //找到愈刪除點在nameTree中的位置

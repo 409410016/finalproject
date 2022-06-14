@@ -1,5 +1,5 @@
 #include"people.h"
-#include"add_delete_update_shorten.c"
+#include"add.c"
 #include"sort.c"
 #include"search_ppl_or_city.c"
 #include"dice.c"
