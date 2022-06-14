@@ -1,7 +1,6 @@
 #include"people.h" 
-#include <time.h>
 
-void dice(int city){
+void dice_city(int city){
     char c;
     if(city==0) c='A';
     else if(city==1) c='B';
@@ -10,57 +9,57 @@ void dice(int city){
     else if(city==4) c='E';
     
     srand(time(NULL));
-    int dice = rand()%6;
+    int dice = rand()%5;
     switch(dice){
         case 0:
-            break;
-        case 1:
             clear(c);
             break;
-        case 2:
+        case 1:
             block_days(c);
             break;
-        case 3:
+        case 2:
             immigrate(c);
             break;
-        case 4:
-            medicine(c);
+        case 3:
+            people_node ptr;
+            ptr = head->next;
+            while(ptr->next!= NULL){
+                if(ptr->city == c){
+                    break;
+                }
+            } 
+            medicine(ptr->name);
             break;
-        case 5:
+        case 4:
             protest();
             break;
     }
 }
 
-void medecine( const char *ppl_name)
-{
+void medicine( const char *ppl_name){
     
-    struct people *cur =*head;
-    if (strcmp(cur->city, ppl_name))
-    {
-        cur = cur->next;
-    }
-    else
-    {
-        srand( time(NULL) );
-        int min = 1;
-        int max = 3;
-        int x = rand() % (max - min + 1) + min;
-        if(x==3)
-            cur->remain_day = 0;
-    }
+    struct people *cur =head;
+    cur = search_people_name(ppl_name);
+    srand( time(NULL) );
+    int min = 1;
+    int max = 3;
+    int x = rand() % (max - min + 1) + min;
+    if(x==3)
+        cur->remain_day = 0;
+
 }
 
-void clear(const char *ppl_name){
+void clear(char city){
     struct people* ptr;
     ptr = head->next;
     while(ptr!=NULL){
-        if (!strcmp(cur->city, ppl_name)){
-            ptr->state = release;
+        if (ptr->city == city){
+            ptr->state = releases;
             ptr->remain_day = -1;
         }
         ptr = ptr->next;
     }
+    return;
 }
 
 void protest(){
@@ -83,4 +82,8 @@ void protest(){
             printf("Humble, humble, more humble\n");
             break;
     }
+}
+
+void immigrate(){
+    
 }
