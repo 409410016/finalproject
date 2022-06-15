@@ -138,10 +138,12 @@ void delete ()
     //從tree中刪除
     find_in_nameTree(rootName, rootName, name, 0); //要delete 掉的name
     find_in_IDTree(rootID, rootID, ptr, 0);
-
+    if(ptr->next != NULL){
     ptr->prev->next = ptr->next; //鏈上刪除
     ptr->next->prev = ptr->prev;
-
+    }else{
+        ptr->prev->next = NULL;
+    }
     temp = head -> next;
     while (temp != NULL){
         if (strcmp(temp->ID, ptr->ID) == 0){

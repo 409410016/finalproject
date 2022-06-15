@@ -19,7 +19,7 @@ void dice_city(int city){
             block_days(c);
             break;
         case 2:
-            printf("City %c's first citizen is going to innigrate to another city!!\n",c);
+            printf("City %c's first citizen is going to immigrate to another city!!\n",c);
             immigrate(c);
             break;
        case 3:
@@ -94,8 +94,14 @@ void protest(){
 void immigrate(char city){
     people_node ptr;
     ptr = head->next;
-    while(ptr->city != city){
+    while(ptr != NULL){
+        if(ptr->city == city){
+            continue;
+        }
         ptr = ptr->next;
+    }
+    if(ptr == NULL){
+        return;
     }
     cities[ptr->city-65].inflected_people--;
     cities[ptr->city-65].total_people--;

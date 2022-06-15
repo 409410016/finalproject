@@ -4,7 +4,7 @@
 //#include"search_ppl_or_city.c"
 //#include"dice.c"
 
-#define DICE 0
+#define DICE 1
 
 void init(){
     // build city and initialized
@@ -71,6 +71,7 @@ int main(){
             else if(!strcmp(instruct,"SEARCH")) search();
             else if(!strcmp(instruct,"SORT")) sort(rootName, rootID);
             else if(!strcmp(instruct,"END")) break;
+            printf("Please input these command to use the database!!\n\"ADD\"(add a person to database)\n\"DELETE\"(delete a person in the database)\n\"TRAVERSE\"(print all the data in the data base)\n\"SEARCH\"(can search the database and print out)\n\"SORT\"(can sort the database and print out)\n\"END\"(today will be end and going to the next day) to use the database.\n");
         }
         printf("success!!\n");
         for(int i =0 ;i<5;i++){
