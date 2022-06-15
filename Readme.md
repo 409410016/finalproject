@@ -32,10 +32,10 @@
     3. TRAVERSE: You can see all the case in the list and informations of each city.
         `TRAVERSE`
     4. SORT: User can choose to Sort the data according to NAME or ID, then see the result.
-        `SORT method(1or2)`
         Hint: which data do you want to sort: (1) name (2) ID
+        `SORT method(1or2)`
     5. SEARCH: User can search the certain data of people or city.
-        `SEARCH method(1or2or3)`
         Hint: Which data do you want to search: (1) name (2) ID (3) city
+        `SEARCH method(1or2or3)`
     6. END: If user has no more action, end the day.
         `END`
