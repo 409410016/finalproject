@@ -131,7 +131,7 @@ void delete ()
 
     ptr->prev->next = ptr->next; //鏈上刪除
     ptr->next->prev = ptr->prev;
-    temp = head;
+    temp = head->next;
     int check = 0;
 
     while (temp->next != NULL)
