@@ -119,7 +119,7 @@ void immigrate(char city){
     return;
 }
 
-void block_days(char city){                                                 //封鎖城市不讀入測資
+void block_days(char city){                                                 //block city (no input)
     printf("City %c is blocked right now!!\n",city);
     printf("There won't appear any inflected person in city %c\n",city);
     city_state[city-65] = 1;
