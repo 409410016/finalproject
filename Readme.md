@@ -5,12 +5,12 @@
     (!!This is not the real situation, it is purely for research!!)
     
 ### What can it do?
-    1. **basic operation**: User can modify the data in this data, or check the information about the city and cases.
-    2. **simulate the real situation**: In each day, we pretend to be the mayor on a mission.
+    1. basic operation: User can modify the data in this data, or check the information about the city and cases.
+    2. simulate the real situation: In each day, we pretend to be the mayor on a mission.
     So that we can study the situation of this epidemic.
 
 ### What information we use:
-    A. **Information of people**:
+    A. Information of people:
         1. ID
         2. Age
         3. Sex
@@ -19,7 +19,7 @@
         6. remain day(isolation)
         7. State(isolation/release)
 
-    B. **Information of city**:
+    B. Information of city:
         1. How many people are in this city?
         2. How many people are infected?
         3. What is the infection rate?
