@@ -30,9 +30,9 @@ void print_all(){
     // 人員基本資料
     struct people *cur;
     cur = head->next;
-    printf("ID\tNAME\tSEX\tAGE\tCITY\tREMAIN_DAY\tSTATE\n");
+    printf("ID\tNAME\t\tSEX\tAGE\tCITY\tREMAIN_DAY\tSTATE\n");
     while (cur != NULL) {
-        printf("%s\t%s\t%c\t%d\t%c\t%d\t", cur->ID, cur->name, cur->sex, cur->age, cur->city, cur->remain_day);
+        printf("%s\t%s\t\t%c\t%d\t%c\t%d\t\t", cur->ID, cur->name, cur->sex, cur->age, cur->city, cur->remain_day);
         if(cur->state==0) printf("isolation\n");
         else if(cur->state==1) printf("quarantine\n");
         else if(cur->state==2) printf("release\n");
@@ -64,6 +64,7 @@ int main(){
 
         // basic operation
         char instruct[10];
+        printf("Please input these command to use the database!!\n\"ADD\"(add a person to database)\n\"DELETE\"(delete a person in the database)\n\"TRAVERSE\"(print all the data in the data base)\n\"SEARCH\"(can search the database and print out)\n\"SORT\"(can sort the database and print out)\n\"END\"(today will be end and going to the next day) to use the database.\n");
         while(scanf("%s",&instruct)){
             if(!strcmp(instruct,"ADD")) add_user();
             else if(!strcmp(instruct,"DELETE")) delete();
@@ -72,19 +73,18 @@ int main(){
             else if(!strcmp(instruct,"SORT")) sort();
             else if(!strcmp(instruct,"END")) break;
         }
-        
+        printf("success!!\n");
         // dice
-        for(int i=0;i<num_of_cities;i++)
-            dice_city(i);
+        //for(int i=0;i<num_of_cities;i++)
+        //    dice_city(i);
         
         // daily report
         printf("Today is: DAY %d\n",today);
-        printf("Total inflect: %d",cities[0].inflected_people+cities[1].inflected_people+cities[2].inflected_people+cities[3].inflected_people+cities[4].inflected_people);
-        printf("A\tB\tC\tD\tE\n");
-        printf("%d\t%d\t%d\t%d\t%d\n",cities[0].inflected_people,cities[1].inflected_people,cities[2].inflected_people,cities[3].inflected_people,cities[4].inflected_people);
+        printf("Total inflect: %d\n",cities[0].inflected_people+cities[1].inflected_people+cities[2].inflected_people+cities[3].inflected_people+cities[4].inflected_people);
+        printf("A\t\tB\t\tC\t\tD\t\tE\n");
+        printf("%d\t\t%d\t\t%d\t\t%d\t\t%d\n",cities[0].inflected_people,cities[1].inflected_people,cities[2].inflected_people,cities[3].inflected_people,cities[4].inflected_people);
         printf("%f\t%f\t%f\t%f\t%f\n",cities[0].inflected_rate,cities[1].inflected_rate,cities[2].inflected_rate,cities[3].inflected_rate,cities[4].inflected_rate);
 
-        // release
         release(1);
     }
 
