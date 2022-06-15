@@ -1,6 +1,7 @@
 
 ### Background:
-    In response to new disease breakout, throughtout the country everyone is in a hard time, so we want to build a database to store the disease case.
+    In response to new disease breakout, throughtout the country everyone is in a hard time, 
+    so we want to build a database to store the disease case.
     (!!This is not the real situation, it is purely for research!!)
     
 ### What can it do?
