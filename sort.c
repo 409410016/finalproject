@@ -8,6 +8,7 @@ void sort(ptrTree rootName, ptrTree rootID)
     printf("(1) name (2) ID\n");
     printf("data type number: ");
     scanf("%d", &No);
+    printf("ID\tNAME\tSEX\tAGE\tCITY\tREMAIN_DAY\tSTATE\n");
     if (No == 1)
         traversal(rootName);
     else if (No == 2)
@@ -20,8 +21,11 @@ void traversal(ptrTree root)
     if (root != NULL)
     {
         traversal(root->left);
-        printf("%s %s %c %d %d\n", root->data->ID, root->data->name, root->data->sex,
-               root->data->age, root->data->remain_day);
+        printf("%s\t%s\t%c\t%d\t%c\t%d\t\t", root -> data->ID, root -> data->name, root -> data->sex, \
+        root -> data->age, root -> data->city, root -> data->remain_day);
+        if(root -> data->state==0) printf("isolation\n");
+        else if(root -> data->state==1) printf("quarantine\n");
+        else if(root -> data->state==2) printf("release\n");
         traversal(root->right);
     }
 }
