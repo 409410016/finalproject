@@ -155,13 +155,14 @@ void delete ()
         return;
     }
 
-    temp = head;
-    while (temp->next != NULL)
+    temp = head -> next;
+    while (temp != NULL)
     {
         if (strcmp(temp->ID, ptr->ID) == 0)
         {
             temp->pre_inflect_people = qtr;
         }
+        temp = temp ->next
     }
     free(ptr);
     update_city();
