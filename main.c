@@ -47,7 +47,7 @@ void print_all(){
 }
 
 int main(){
-    
+    srand( time(NULL) );
     init(); // initialized and city info
     fp = fopen("data.txt","r");
     today = 1;
@@ -74,9 +74,9 @@ int main(){
         for(int i =0 ;i<5;i++){
             city_state[i] = 0;
         }
-        for(int i=0;i<num_of_cities;i++){
+        /*for(int i=0;i<num_of_cities;i++){
             dice_city(i);
-        }
+        }*/
         // daily report
         printf("Today is: DAY %d\n",today);
         printf("Total inflect: %d\n",cities[0].inflected_people+cities[1].inflected_people+cities[2].inflected_people+cities[3].inflected_people+cities[4].inflected_people);

@@ -6,31 +6,30 @@ void dice_city(int city){
     else if(city==1) c='B';
     else if(city==2) c='C';
     else if(city==3) c='D';
-    else if(city==4) c='E';
-    
-    srand(time(NULL));
+    else if(city==4) c='E';    
     int dice = rand()%5;
     people_node ptr;
-    printf("Now is City %c's Mayor to do his job!!\n",city);
+    printf("Now is City %c's Mayor to do his job!!\n",c);
     switch(dice){
         case 0:
-            printf("City %c is going to clear the city\n",city);
+            printf("City %c is going to clear the city\n",c);
             clear(c);
             break;
         case 1:
             block_days(c);
             break;
         case 2:
-            printf("City %c's first citizen is going to innigrate to another city!!\n",city);
+            printf("City %c's first citizen is going to innigrate to another city!!\n",c);
             immigrate(c);
             break;
        case 3:
-            printf("City %c get medicine to cure his citizen.\n",city);
+            printf("City %c get medicine to cure his citizen.\n",c);
             ptr = head->next;
             while(ptr->next!= NULL){
                 if(ptr->city == c){
                     break;
                 }
+                ptr = ptr->next;
             } 
             medicine(ptr->name);
             break;
@@ -42,9 +41,8 @@ void dice_city(int city){
 
 void medicine( const char *ppl_name){
     
-    struct people *cur =head;
+    struct people *cur;
     cur = search_people_name(ppl_name);
-    srand( time(NULL) );
     int min = 1;
     int max = 3;
     int x = rand() % (max - min + 1) + min;
@@ -73,7 +71,6 @@ void clear(char city){
 }
 
 void protest(){
-    srand(time(NULL));
     int dice = rand()%5;
     switch(dice){
         case 0:
@@ -118,7 +115,7 @@ void immigrate(char city){
 
 void block_days(char city){                                                 //封鎖城市不讀入測資
     printf("City %c is blocked right now!!\n",city);
-    printf("There won't appear any inflected person in city %c",city);
+    printf("There won't appear any inflected person in city %c\n",city);
     city_state[city-65] = 1;
     return;
 }

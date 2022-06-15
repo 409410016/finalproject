@@ -109,8 +109,8 @@ void add()
     ptr->state = isolation;
     update_city();
     // insert節點進tree
-    rootName = rootName = insert(rootName, rootName, rootName, ptr, "name", 0);
-    rootID = rootID = insert(rootID, rootID, rootID, ptr, "ID", 0);
+    rootName = insert(rootName, rootName, rootName, ptr, "name", 0);
+    rootID = insert(rootID, rootID, rootID, ptr, "ID", 0);
     return;
 }
 
