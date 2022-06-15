@@ -119,7 +119,12 @@ void immigrate(char city){
     return;
 }
 
+<<<<<<< HEAD
 void block_days(char city){                                                 //block city (no input)
+=======
+// blocked th city, so this city don't have case tomorrow
+void block_days(char city){                                              
+>>>>>>> 277e786ea208ff70bacd0d78a02291f30a69f645
     printf("City %c is blocked right now!!\n",city);
     printf("There won't appear any inflected person in city %c\n",city);
     city_state[city-65] = 1;
