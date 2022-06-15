@@ -29,14 +29,16 @@ void traversal(ptrTree root)
         traversal(root->right);
     }
 }
-// front為當前節點(node)的上節點
-// node為當前節點，遞迴到最後為插入節點的位置
-// tmp指向新資料(people型態)的指標
-// element為排序的基準，name或ID
-// big代表front和node的關係 0代表front = node = root; -1代表node為front的左子節點; 1代表node為front的右子節點
+
+// front is parent node of node
+// node is basis of judgment,in Recursion end, it is the plasce to insert.
+// tmp is a pointer that point to the new data (people)
+// element is the standard of sort, name or ID.
+// big represent the relative size of front and node
+// 0 represent front = node = root; -1 represent node is left child node of front; 1 represent right child node
 ptrTree insert(ptrTree root, ptrTree front, ptrTree node, struct people *tmp, char *element, int big)
 {
-    // tree為空
+    // tree is empty
     if (root == NULL)
     {
         root = malloc(sizeof(tree));
@@ -44,7 +46,7 @@ ptrTree insert(ptrTree root, ptrTree front, ptrTree node, struct people *tmp, ch
         root -> left = NULL;
         root -> right = NULL;
     }
-    //愈檢索位置無node，將其插入
+    //insert the node
     else if (node == NULL)
     {
         node = malloc(sizeof(tree));
@@ -57,7 +59,7 @@ ptrTree insert(ptrTree root, ptrTree front, ptrTree node, struct people *tmp, ch
             front->right = node;
     }
 
-    // insert進以name排序的BST
+    // insert the BST of name
     else if (strcmp(element, "name") == 0)
     {
         if (strcmp(tmp->name, node->data->name) < 0)
@@ -67,7 +69,7 @@ ptrTree insert(ptrTree root, ptrTree front, ptrTree node, struct people *tmp, ch
             root = insert(root, node, node->right, tmp, element, 1);
             
     }
-    // insert進以ID排序的BST
+    // insert the BST of ID
     else if (strcmp(element, "ID") == 0)
     {
         if (strcmp(tmp->ID, node->data->ID) < 0)
@@ -77,25 +79,25 @@ ptrTree insert(ptrTree root, ptrTree front, ptrTree node, struct people *tmp, ch
     }
     return root;
 }
-// front為當前節點(node)的上節點
-// node為當前節點，遞迴到最後為欲刪除的節點的位置
-// name為欲刪除節點的name資料
-// big代表front和node的關係 0代表front = node = root; -1代表node為front的左子節點; 1代表node為front的右子節點
+// front is parent node of node.
+// nowNode is basis of judgment,in Recursion end, it is the plasce to delete.
+// name is the people data that user want to delete.
+// big is the same as the insert function.
 void find_in_nameTree(ptrTree front, ptrTree nowNode, char *name, int big)
 {
-    //無此資料
+    //no this data
     if (nowNode == NULL)
         printf("invaild input\n");
-    //目標資料小於當前節點
+    //target data is less than current data
     else if (strcmp(name, nowNode->data->name) < 0)
         find_in_nameTree(nowNode, nowNode->left, name, -1);
-    //目標資料大於當前節點
+    //target data is bigger than current data
     else if (strcmp(name, nowNode->data->name) > 0)
         find_in_nameTree(nowNode, nowNode->right, name, 1);
-    //目標資料等於當前節點
+    //target data is equal to current data
     else if (strcmp(name, nowNode->data->name) == 0)
     {
-        //節點為根節點且只有一個子節點
+        //node is root and it only has one child node
         if (front == nowNode && (!(front->left && front->right)))
             rootName = (rootName->left) ? (rootName->left) : (rootName->right);
         else
@@ -103,22 +105,22 @@ void find_in_nameTree(ptrTree front, ptrTree nowNode, char *name, int big)
     }
 }
 
-//同find_in_nameTree 比對目標改為ID
+//is the same as the find_in_nameTree, change name to the pointer point to people.
 void find_in_IDTree(ptrTree front, ptrTree nowNode, struct people *target, int big)
 {
-    //無此資料
+    //no this data
     if (nowNode == NULL)
         printf("invaild input\n");
-    //目標資料小於當前節點
+    //target data is less than current data
     else if (strcmp(target->ID, nowNode->data->ID) < 0)
         find_in_IDTree(nowNode, nowNode->left, target, -1);
-    //目標資料大於當前節點
+    //target data is bigger than current data
     else if (strcmp(target->ID, nowNode->data->ID) > 0)
         find_in_IDTree(nowNode, nowNode->right, target, 1);
-    //目標資料等於當前節點
+    //target data is equal to current data
     else if (strcmp(target->ID, nowNode->data->ID) == 0)
     {
-        //節點為根節點且只有一個子節點
+        //node is root and it only has one child node
         if (front == nowNode && (!(front->left && front->right)))
             rootID = (rootID->left) ? (rootID->left) : (rootID->right);
         else
@@ -126,9 +128,11 @@ void find_in_IDTree(ptrTree front, ptrTree nowNode, struct people *target, int b
     }
 }
 
+// front is parent node of node.
+// nowNode is the plasce to delete.
 void delete_in_tree(ptrTree front, ptrTree nowNode, int big)
 {
-    //該節點為葉節點
+    //is leaf node
     if (!nowNode->left && !nowNode->right)
     {
         if (big == -1)
@@ -137,7 +141,7 @@ void delete_in_tree(ptrTree front, ptrTree nowNode, int big)
             front->right = NULL;
         free(nowNode);
     }
-    //該節點只有一個左節點
+    //only has left child node
     else if (nowNode->left && !nowNode->right)
     {
         if (big == -1)
@@ -146,7 +150,7 @@ void delete_in_tree(ptrTree front, ptrTree nowNode, int big)
             front->right = nowNode->left;
         free(nowNode);
     }
-    //該節點只有一個右節點
+    //only has right child node
     else if (!nowNode->left && nowNode->right)
     {
         if (big == -1)
@@ -155,10 +159,10 @@ void delete_in_tree(ptrTree front, ptrTree nowNode, int big)
             front->right = nowNode->right;
         free(nowNode);
     }
-    //該節點有兩個子節點
+    //has two child node
     else if (nowNode->left && nowNode->right)
     {
-        //用其右子樹中最小的點target代替，並刪除target原本的位置
+        //use the smallest node target replace
         ptrTree taregetParent = nowNode;
         ptrTree target = nowNode->right;
         while (target != NULL && target->left != NULL)
