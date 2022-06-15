@@ -1,4 +1,4 @@
-#include"people.h" 
+#include"people.h"
 
 void dice_city(int city){
     char c;
@@ -10,6 +10,7 @@ void dice_city(int city){
     
     srand(time(NULL));
     int dice = rand()%5;
+    people_node ptr;
     switch(dice){
         case 0:
             clear(c);
@@ -20,8 +21,7 @@ void dice_city(int city){
         case 2:
             immigrate(c);
             break;
-        case 3:
-            people_node ptr;
+       case 3:
             ptr = head->next;
             while(ptr->next!= NULL){
                 if(ptr->city == c){
@@ -84,6 +84,20 @@ void protest(){
     }
 }
 
-void immigrate(){
-    
+void immigrate(char city){
+    people_node ptr;
+    ptr = head->next;
+    while(ptr->city != city){
+        ptr = ptr->next;
+    }
+    if(ptr->city == 'E'){
+        ptr->city = 'A';
+    }else{
+        ptr->city = ptr->city+1;
+    }
+    return;
+}
+
+void block_days(char city){
+
 }

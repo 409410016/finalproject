@@ -30,7 +30,7 @@ void search(){
     else if(No == 3){
         point=search_city(condition);
         printf("Total\tinflect\tinflect rate\n");
-        printf("%d\t%d\t%f\n", cities[i].total_people, cities[i].inflected_people, cities[i].inflected_rate);
+        printf("%d\t%d\t%f\n", cities[point].total_people, cities[point].inflected_people, cities[point].inflected_rate);
     }
 }
 
@@ -94,7 +94,7 @@ struct people *search_people_ID(const char ppl_ID[])
     }
 }
 
-int search_city(const char ppl_city)
+int search_city(const char ppl_city[])
 {
     // assume city is char array
 //     for (int i = 0; i < num_of_cities; i++)
@@ -108,5 +108,5 @@ int search_city(const char ppl_city)
 //             return i; //回傳該城市所屬數字
 //         }
 //     }
-    return (ppl_city-65);
+    return (*ppl_city-65);
 }

@@ -22,7 +22,7 @@ struct people{
     char name[50];
     /*<----------->*/
     int remain_day;                                                         //累積隔離天數       
-    enum{isolation,quarantine,releases} state;
+    enum{isolation,quarantine,releases}state;
     /*<----------->*/    
     struct people *pre_inflect_people;                                      //誰是傳染源
     struct people *next;                                                    //下一個輸入人員
@@ -51,7 +51,6 @@ ptrTree rootID;
 int today;
 FILE *fp;
 people_node head;
-char states[3][11]={"isolation","quarantine","release"};
 
 //basic func()
 void add();                                                                 //加入people，同時增加city人數
@@ -67,16 +66,17 @@ void delete_in_tree (ptrTree front, ptrTree nowNode, int big);                  
 void traversal(ptrTree root);                                                    //中序遍歷
 void sort();                                                                //選擇其中一種tree並中序遍歷它
 
+void search();
 struct people *search_people_name(const char ppl_name[]);                   //people資料
 struct people *search_people_ID(const char ppl_ID[]);
 int search_city(const char ppl_city[]);                                     //city裡面的東西
 
 
 //funny func
-void dice_city(int);
+void dice_city(int city);
 void clear(char city);
 void protest();
 void medicine(const char* ppl_name);                                                  //讓people痊癒(修改資料)
-//block_days()                                                              //一樣有輸入確診，不過跳過公告(封鎖訊息)即沒有訊息
-
+void block_days(char city);                                                              //一樣有輸入確診，不過跳過公告(封鎖訊息)即沒有訊息
+void immigrate(char city);
 #endif
