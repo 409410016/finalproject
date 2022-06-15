@@ -65,7 +65,7 @@ void find_in_nameTree(ptrTree front, ptrTree nowNode, char *name, int big);     
 void find_in_IDTree(ptrTree front, ptrTree nowNode, struct people* target, int big);                 //找到愈刪除點在nameTree中的位置
 void delete_in_tree (ptrTree front, ptrTree nowNode, int big);                                //刪除節點
 void traversal(ptrTree root);                                                    //中序遍歷
-void sort();                                                                //選擇其中一種tree並中序遍歷它
+void sort(ptrTree, ptrTree);                                                                //選擇其中一種tree並中序遍歷它
 
 void search();
 struct people *search_people_name(const char ppl_name[]);                   //people資料
