@@ -122,7 +122,13 @@ void delete ()
     char name[50];
     printf("Please input a name you want to delete : ");
     scanf("%s", name);
-    ptr = search_people_name(name); // 會回傳該名成員指標
+    ptr = head->next;
+    while(ptr != NULL){
+        if(strcmp(name,ptr->name)==0){
+            break;
+        }
+        ptr = ptr->name;
+    }
     qtr = ptr->pre_inflect_people;
     cities[ptr->city - 65].inflected_people--;
     //從tree中刪除
