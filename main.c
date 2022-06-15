@@ -4,6 +4,8 @@
 //#include"search_ppl_or_city.c"
 //#include"dice.c"
 
+#define DICE 0
+
 void init(){
     // build city and initialized
     cities[0].total_people = num_in_A;
@@ -74,9 +76,11 @@ int main(){
         for(int i =0 ;i<5;i++){
             city_state[i] = 0;
         }
-        /*for(int i=0;i<num_of_cities;i++){
-            dice_city(i);
-        }*/
+        if(DICE){
+            for(int i=0;i<num_of_cities;i++){
+                dice_city(i);
+            }
+        }
         // daily report
         printf("Today is: DAY %d\n",today);
         printf("Total inflect: %d\n",cities[0].inflected_people+cities[1].inflected_people+cities[2].inflected_people+cities[3].inflected_people+cities[4].inflected_people);
