@@ -1,25 +1,26 @@
 確診隔離人員資料庫(new virus)
 
 command:
-    n:next day
 
 operation(工作內容):
-    add:
-        add people
-    delete:
-        若被解隔及delete
-    print all item:
-        依據各city列印people
-    sort:(ascending)
+// 要怎麼輸入指令
+    ADD: add people
+    
+    DELETE:若被解隔及delete
+    
+    TRAVERSE: 印出全部，依據各city列印people
+    
+    SORT:(ascending)
         according 姓名、ID
         (方法)用struct pointer array去做sort
-    search:
+    SEARCH:
         search_people : according 姓名 or ID : 輸出個人以及他的pre感染鏈
         search_city : city資料
+    END: next day
     file in:(按n會新增下一天資料)
         1(天)    +450000
         danny wong  female  ...
-    file out:(公告)
+    Report(out):(公告)
         記錄每天的變化跟結果。
     funny func():(maybe divided in to 2 pieces?)
         change the data in the system
