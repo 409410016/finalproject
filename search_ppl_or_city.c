@@ -69,7 +69,7 @@ struct people *search_people_ID(const char ppl_ID[])
     struct people *cur = head;
     while (cur != NULL)
     {
-        if (strcmp(cur->name, ppl_ID)) // wrong ppl
+        if (strcmp(cur->ID, ppl_ID)) // wrong ppl
         {
             cur = cur->next;
         }
