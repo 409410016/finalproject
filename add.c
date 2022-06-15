@@ -137,7 +137,7 @@ void release(int day){
     today++;
     people_node ptr;
     ptr = head->next;
-    while(ptr->next != NULL){
+    while(ptr != NULL){
         if(ptr->remain_day > day){
             ptr->remain_day-=day;
         }else if(ptr->remain_day == day && ptr->state == 0){
@@ -149,6 +149,7 @@ void release(int day){
             cities[ptr->city - 65].inflected_people--;
             update_city();
         }
+        ptr = ptr->next;
     }
     return;
 }
