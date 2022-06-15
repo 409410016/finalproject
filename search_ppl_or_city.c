@@ -94,18 +94,19 @@ struct people *search_people_ID(const char ppl_ID[])
     }
 }
 
-int search_city(const char ppl_city[])
+int search_city(const char ppl_city)
 {
     // assume city is char array
-    for (int i = 0; i < num_of_cities; i++)
-    {
-        if (cities[i] != (ppl_city - 65))
-        {
-            continue;
-        }
-        else
-        {
-            return i; //回傳該城市所屬數字
-        }
-    }
+//     for (int i = 0; i < num_of_cities; i++)
+//     {
+//         if ( != (ppl_city - 65))
+//         {
+//             continue;
+//         }
+//         else
+//         {
+//             return i; //回傳該城市所屬數字
+//         }
+//     }
+    return (ppl_city-65);
 }
