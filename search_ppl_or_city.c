@@ -44,12 +44,12 @@ struct people *search_people_name(const char ppl_name[])
         {
             cur = cur->next;
         }
-        else //已經找到people的地址了。
+        else //already_find_*people。
         {
             char name[1000][50];
             int k = 0;
             ptr = cur;
-            ////////////先印傳染源，再印自己///////////////////////////////////////////
+            ////////////print Source of infection///////////////////////////////////////////
             while (ptr->pre_inflect_people != NULL)
             {
                 strcpy(name[k++],ptr->pre_inflect_people->ID);
@@ -78,12 +78,12 @@ struct people *search_people_ID(const char ppl_ID[])
         {
             cur = cur->next;
         }
-        else //已經找到people的地址了。
+        else //already_find_*people。
         {
             char name[1000][50];
             int k = 0;
             ptr = cur;
-            ////////////先印傳染源，再印自己///////////////////////////////////////////
+            ////////////print Source of infection///////////////////////////////////////////
             while (ptr->pre_inflect_people != NULL)
             {
                 strcpy(name[k++],ptr->pre_inflect_people->ID);
