@@ -18,12 +18,9 @@ void init(){
     // struct head
     head = (struct people*)malloc(sizeof(struct people));
     head->next = NULL;
+    rootName = NULL;
+    rootID = NULL;
     return;
-    //初始化根節點
-    rootName = malloc(sizeof(tree));
-    rootName->data = NULL, rootName->left = NULL, rootName->right = NULL;
-    rootID = malloc(sizeof(tree));
-    rootID->data = NULL, rootID->left = NULL, rootID->right = NULL;
 }
 
 void print_all(){
