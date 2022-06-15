@@ -69,7 +69,7 @@ struct people *search_people_ID(const char ppl_ID[])
     struct people *cur = head;
     while (cur != NULL)
     {
-        if (strcmp(cur->name, ppl_ID)) // wrong ppl
+        if (strcmp(cur->ID, ppl_ID)) // wrong ppl
         {
             cur = cur->next;
         }
@@ -80,13 +80,13 @@ struct people *search_people_ID(const char ppl_ID[])
             ////////////先印傳染源，再印自己///////////////////////////////////////////
             while (cur->pre_inflect_people != NULL)
             {
-                strcpy(name[k],cur->pre_inflect_people->ID);
+                strcpy(name[k++],cur->pre_inflect_people->ID);
             }
-            for (int i = 0; i < k; i++)
+            for (int i = k-1; i >= 0; i--)
             {
-                printf("%s", name[i]);
+                printf("%s ", name[i]);
             }
-            printf("%s", cur->ID);
+            printf("%s ", cur->ID);
             //////////////////////////////////////////////////////////////////////////
             return cur;
             //             print("%s", cur->name);

@@ -1,8 +1,8 @@
 #include"people.h"
-#include"add.c"
-#include"sort.c"
-#include"search_ppl_or_city.c"
-#include"dice.c"
+//#include"add.c"
+//#include"sort.c"
+//#include"search_ppl_or_city.c"
+//#include"dice.c"
 
 void init(){
     // build city and initialized
@@ -59,13 +59,13 @@ int main(){
     while(1){
         // read data
         int new;
-        scanf("%d\n",&new);
+        fscanf(fp,"%d\n",&new);
         while(new--) add();
 
         // basic operation
         char instruct[10];
         while(scanf("%s",&instruct)){
-            if(!strcmp(instruct,"ADD")) add();
+            if(!strcmp(instruct,"ADD")) add_user();
             else if(!strcmp(instruct,"DELETE")) delete();
             else if(!strcmp(instruct,"TRAVERSE")) print_all();
             else if(!strcmp(instruct,"SEARCH")) search();
@@ -75,7 +75,7 @@ int main(){
         
         // dice
         for(int i=0;i<num_of_cities;i++)
-            dice(i);
+            dice_city(i);
         
         // daily report
         printf("Today is: DAY %d\n",today);

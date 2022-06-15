@@ -11,4 +11,4 @@ search_ppl_or_city.o:search_ppl_or_city.c people.h
 sort.o:sort.c people.h
 	gcc -g  -c sort.c people.h
 clean:
-	rm a.out *.o
+	rm test *.o

@@ -3,7 +3,7 @@
 
 void update_city(){
     for(int i=0;i<5;i++){
-        cities[i].inflected_rate = cities[i].inflected_people/cities[i].total_people;
+        cities[i].inflected_rate = (float)cities[i].inflected_people/(float)cities[i].total_people;
     }
     return;
 }
@@ -12,16 +12,22 @@ void add(){                 //新增人員、累加當天人數、結束時更�
     char temp[1024];
     fgets(temp,1024,fp);              //input file
     char *id,*name,*age,*sex,*city,*chop,*pre_id;
-    chop = strtok(temp," ");
+    chop = strtok(temp," \0");
     id = chop;
-    chop = strtok(NULL," ");
+    chop = strtok(NULL," \0");
     name = chop;
-    chop = strtok(NULL," ");
+    chop = strtok(NULL," \0");
+    sex = chop;
+    if(*sex != 'F' && *sex != 'M'){
+        printf("invalid input!\n");
+        return;
+    }
+    chop = strtok(NULL," \0");
     age = chop;
-    for(int i = 0; i >= 0; i++ ){
-        if(*(age+i) > 47 && *(age+i) < 58  ){
+    for(int i = 0 ;; i++ ){
+        if(*(age+i) > 47 && *(age+i) < 58){
             continue;
-        }else if(age+i == NULL){
+        }else if(*(age+i) == '\0'){
             break;
         }else{
             printf("invalid input!\n");
@@ -29,34 +35,29 @@ void add(){                 //新增人員、累加當天人數、結束時更�
         }
     }
     chop = strtok(NULL," ");
-    sex = chop;
-    if(*sex != 'F' || *sex != 'M'){
-        printf("invalid input!\n");
-        return;
-    }
-    chop = strtok(NULL," ");
     city = chop;
-    if( *city != 'A' || *city != 'B' || *city != 'C' || *city != 'D' || *city != 'E'){
+    if( *city != 'A' && *city != 'B' && *city != 'C' && *city != 'D' && *city != 'E'){
         printf("invalid input!\n");
         return;
     }
-    chop = strtok(NULL," ");
+    chop = strtok(NULL," \0\n\r");
     pre_id = chop;
     people_node qtr;
-    qtr = head;
+    qtr = head->next;
     int check = 0;
-    while(qtr->next!= NULL){
-        if(strcmp(pre_id,qtr->ID) == 0){
-            check = 1;
-            break;
+    if(*pre_id != '*'){
+        while(qtr!= NULL){
+            if(strncmp(pre_id,qtr->ID,3) == 0){
+                check = 1;
+                break;
+            }
+            qtr = qtr->next;
         }
-        qtr = qtr->next;
+        if(check == 0){
+            printf("invalid input!\n");
+            return; 
+        }
     }
-    if(check == 0){
-        printf("invalid input!\n");
-        return; 
-    }
-
     people_node ptr,temptr,preinflect;
     ptr = (people_node)malloc(sizeof(struct people));
     temptr= head;
@@ -66,11 +67,11 @@ void add(){                 //新增人員、累加當天人數、結束時更�
     temptr->next = ptr;
     ptr->next = NULL;
     ptr->prev = temptr;
-    temptr = head;
+    temptr = head->next;
     if(*pre_id == '*'){
         ptr->pre_inflect_people = NULL;
     }else{
-        while(strcmp(temptr->ID,pre_id) != 0){                              //感染源
+        while(strncmp(temptr->ID,pre_id,3) != 0){                              //感染源
             temptr = temptr->next;
         }
         ptr->pre_inflect_people = temptr;
@@ -94,7 +95,7 @@ void add(){                 //新增人員、累加當天人數、結束時更�
 
 void delete(){                      // 搜尋並刪除任意人員   結束時更新city資料
     people_node ptr,temp,qtr;
-    char *name;
+    char name[50];
     printf("Please input a name you want to delete : ");
     scanf("%s",name);
     ptr = search_people_name(name);                        // 會回傳該名成員指標
@@ -157,18 +158,26 @@ void add_user(){                                //1 Amy F 18 A (id)
     char temp[1024];
     printf("If there is no previous inflected person, please input \"*\".\n");
     printf("Please input the information of inflected people in the next line!!\n");
+    fflush(stdin);
     fgets(temp,1024,stdin);
+
     char *id,*name,*age,*sex,*city,*chop,*pre_id;
     chop = strtok(temp," ");
     id = chop;
     chop = strtok(NULL," ");
     name = chop;
     chop = strtok(NULL," ");
+    sex = chop;
+    if(*sex != 'F' && *sex != 'M'){
+        printf("invalid input!\n");
+        return;
+    }
+    chop = strtok(NULL," ");
     age = chop;
-    for(int i = 0; i >= 0; i++ ){
-        if(*(age+i) > 47 && *(age+i) < 58  ){
+    for(int i = 0 ;; i++ ){
+        if(*(age+i) > 47 && *(age+i) < 58){
             continue;
-        }else if(age+i == NULL){
+        }else if(*(age+i) == '\0'){
             break;
         }else{
             printf("invalid input!\n");
@@ -176,34 +185,29 @@ void add_user(){                                //1 Amy F 18 A (id)
         }
     }
     chop = strtok(NULL," ");
-    sex = chop;
-    if(*sex != 'F' || *sex != 'M'){
-        printf("invalid input!\n");
-        return;
-    }
-    chop = strtok(NULL," ");
     city = chop;
-    if( *city != 'A' || *city != 'B' || *city != 'C' || *city != 'D' || *city != 'E'){
+    if( *city != 'A' && *city != 'B' && *city != 'C' && *city != 'D' && *city != 'E'){
         printf("invalid input!\n");
         return;
     }
-    chop = strtok(NULL," ");
+    chop = strtok(NULL," \n\r");
     pre_id = chop;
     people_node qtr;
-    qtr = head;
+    qtr = head->next;
     int check = 0;
-    while(qtr->next!= NULL){
-        if(strcmp(pre_id,qtr->ID) == 0){
-            check = 1;
-            break;
+    if(*pre_id != '*'){
+        while(qtr!= NULL){
+            if(strncmp(pre_id,qtr->ID,3) == 0){
+                check = 1;
+                break;
+            }
+            qtr = qtr->next;
         }
-        qtr = qtr->next;
+        if(check == 0){
+            printf("invalid input!\n");
+            return; 
+        }
     }
-    if(check == 0){
-        printf("invalid input!\n");
-        return; 
-    }
-
     people_node ptr,temptr,preinflect;
     ptr = (people_node)malloc(sizeof(struct people));
     temptr= head;
@@ -213,11 +217,11 @@ void add_user(){                                //1 Amy F 18 A (id)
     temptr->next = ptr;
     ptr->next = NULL;
     ptr->prev = temptr;
-    temptr = head;
+    temptr = head->next;
     if(*pre_id == '*'){
         ptr->pre_inflect_people = NULL;
     }else{
-        while(strcmp(temptr->ID,pre_id) != 0){                              //感染源
+        while(strncmp(temptr->ID,pre_id,3) != 0){                              //感染源
             temptr = temptr->next;
         }
         ptr->pre_inflect_people = temptr;
@@ -227,10 +231,11 @@ void add_user(){                                //1 Amy F 18 A (id)
     ptr->age = atoi(age);
     ptr->sex = *sex;
     ptr->city = *city;
-    cities[ptr->city-65].inflected_people++;
+    cities[ptr->city - 65].inflected_people++;
     ptr->remain_day = 7;
     ptr->state = isolation;
     update_city();
+    //insert節點進tree
     insert(rootName,rootName,ptr,ptr->name,0);
     insert(rootID,rootID,ptr,ptr->ID,0);
     return;
