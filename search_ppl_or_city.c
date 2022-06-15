@@ -7,7 +7,7 @@ void search(){
     printf("(1) name (2) ID (3) city\n");
     printf("data type number: ");
     scanf("%d", &No);
-    scanf("%s",&condition);
+    scanf("%s",condition);
     
     struct people *ptr;
     int point;
@@ -36,10 +36,11 @@ void search(){
 
 struct people *search_people_name(const char ppl_name[])
 {
-    struct people *cur = head;
+    struct people *cur = head->next;
+    people_node ptr;
     while (cur != NULL)
     {
-        if (strcmp(cur->name, ppl_name)) // wrong ppl
+        if (strcmp(cur->name, ppl_name) != 0) // wrong ppl
         {
             cur = cur->next;
         }
@@ -47,16 +48,19 @@ struct people *search_people_name(const char ppl_name[])
         {
             char name[1000][50];
             int k = 0;
+            ptr = cur;
             ////////////先印傳染源，再印自己///////////////////////////////////////////
-            while (cur->pre_inflect_people != NULL)
+            while (ptr->pre_inflect_people != NULL)
             {
-                strcpy(name[k],cur->pre_inflect_people->ID);
+                strcpy(name[k++],ptr->pre_inflect_people->ID);
+                ptr = ptr->pre_inflect_people;
             }
-            for (int i = 0; i < k; i++)
+            printf("Source of Inflected Chain is : ");
+            for (int i = k-1; i >= 0; i--)
             {
-                printf("%s", name[i]);
+                printf("%s->", name[i]);
             }
-            printf("%s", cur->ID);
+            printf("%s\n", cur->ID);
             //////////////////////////////////////////////////////////////////////////
             return cur;
             //             print("%s", cur->name);
@@ -66,10 +70,11 @@ struct people *search_people_name(const char ppl_name[])
 
 struct people *search_people_ID(const char ppl_ID[])
 {
-    struct people *cur = head;
+    struct people *cur = head->next;
+    people_node ptr;
     while (cur != NULL)
     {
-        if (strcmp(cur->ID, ppl_ID)) // wrong ppl
+        if (strcmp(cur->ID, ppl_ID) != 0) // wrong ppl
         {
             cur = cur->next;
         }
@@ -77,19 +82,22 @@ struct people *search_people_ID(const char ppl_ID[])
         {
             char name[1000][50];
             int k = 0;
+            ptr = cur;
             ////////////先印傳染源，再印自己///////////////////////////////////////////
-            while (cur->pre_inflect_people != NULL)
+            while (ptr->pre_inflect_people != NULL)
             {
-                strcpy(name[k++],cur->pre_inflect_people->ID);
+                strcpy(name[k++],ptr->pre_inflect_people->ID);
+                ptr = ptr->pre_inflect_people;
             }
+            printf("Source of Inflected Chain is : ");
             for (int i = k-1; i >= 0; i--)
             {
-                printf("%s ", name[i]);
+                printf("%s->", name[i]);
             }
-            printf("%s ", cur->ID);
+            printf("%s\n", cur->ID);
             //////////////////////////////////////////////////////////////////////////
             return cur;
-            //             print("%s", cur->name);
+            //             print("%s", cur->ID);
         }
     }
 }
