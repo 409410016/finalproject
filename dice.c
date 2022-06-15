@@ -11,17 +11,21 @@ void dice_city(int city){
     srand(time(NULL));
     int dice = rand()%5;
     people_node ptr;
+    printf("Now is City %c's Mayor to do his job!!\n",city);
     switch(dice){
         case 0:
+            printf("City %c is going to clear the city\n",city);
             clear(c);
             break;
         case 1:
             block_days(c);
             break;
         case 2:
+            printf("City %c's first citizen is going to innigrate to another city!!\n",city);
             immigrate(c);
             break;
        case 3:
+            printf("City %c get medicine to cure his citizen.\n",city);
             ptr = head->next;
             while(ptr->next!= NULL){
                 if(ptr->city == c){

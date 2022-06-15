@@ -60,7 +60,7 @@ void update_city();                                                         //�
 void delete();                                                              //刪除people，同時減少city人數
 void release(int day);
 //sort part
-void insert(ptrTree front, ptrTree node, struct people *tmp, char *element, int big);                //插入node
+ptrTree insert(ptrTree root, ptrTree front, ptrTree node, struct people *tmp, char *element, int big);                //插入node
 void find_in_nameTree(ptrTree front, ptrTree nowNode, char *name, int big);                       //找到愈刪除點在nameTree中的位置
 void find_in_IDTree(ptrTree front, ptrTree nowNode, struct people* target, int big);                 //找到愈刪除點在nameTree中的位置
 void delete_in_tree (ptrTree front, ptrTree nowNode, int big);                                //刪除節點
