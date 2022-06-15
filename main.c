@@ -67,7 +67,7 @@ int main(){
             else if(!strcmp(instruct,"DELETE")) delete();
             else if(!strcmp(instruct,"TRAVERSE")) print_all();
             else if(!strcmp(instruct,"SEARCH")) search();
-            else if(!strcmp(instruct,"SORT")) sort();
+            else if(!strcmp(instruct,"SORT")) sort(rootName, rootID);
             else if(!strcmp(instruct,"END")) break;
         }
         printf("success!!\n");
