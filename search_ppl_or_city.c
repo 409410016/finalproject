@@ -50,7 +50,7 @@ struct people *search_people_name(const char ppl_name[])
             ////////////先印傳染源，再印自己///////////////////////////////////////////
             while (cur->pre_inflect_people != NULL)
             {
-                name[k] = cur->pre_inflect_people->ID;
+                strcpy(name[k],cur->pre_inflect_people->ID;
             }
             for (int i = 0; i < k; i++)
             {
@@ -75,10 +75,12 @@ struct people *search_people_ID(const char ppl_ID[])
         }
         else //已經找到people的地址了。
         {
+            char name[1000][50];
+            int k = 0;
             ////////////先印傳染源，再印自己///////////////////////////////////////////
             while (cur->pre_inflect_people != NULL)
             {
-                name[k] = cur->pre_inflect_people->ID;
+                strcpy(name[k],cur->pre_inflect_people->ID;
             }
             for (int i = 0; i < k; i++)
             {
