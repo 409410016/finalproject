@@ -11,7 +11,7 @@ void update_city()
 }
 
 void add()
-{ //新增人員、累加當天人數、結束時更新city資料(1 Amy F 18 A (id))
+{ //add persom、caculate total people、update city information at the end(1 Amy F 18 A (id))
     char temp[1024];
     fgets(temp, 1024, fp); // input file
     char *id, *name, *age, *sex, *city, *chop, *pre_id;
@@ -80,7 +80,7 @@ void add()
     ptr = (people_node)malloc(sizeof(struct people));
     temptr = head;
     while (temptr->next != NULL)
-    { //從後面加入node
+    { //add node from the back
         temptr = temptr->next;
     }
     temptr->next = ptr;
@@ -94,7 +94,7 @@ void add()
     else
     {
         while (strncmp(temptr->ID, pre_id, 3) != 0)
-        { //感染源
+        { //source of inflection
             temptr = temptr->next;
         }
         ptr->pre_inflect_people = temptr;
@@ -108,7 +108,7 @@ void add()
     ptr->remain_day = 7;
     ptr->state = isolation;
     update_city();
-    // insert節點進tree
+    // insert node into tree
     rootName = insert(rootName, rootName, rootName, ptr, "name", 0);
     rootID = insert(rootID, rootID, rootID, ptr, "ID", 0);
     return;
@@ -117,7 +117,7 @@ void add()
 //刪除分chain刪除(有無傳染源)跟鏈上刪除
 
 void delete ()
-{ // 搜尋並刪除任意人員   結束時更新city資料
+{ //search and delete any node      update city information at the end
     people_node ptr, temp, qtr;
     char name[50];
     printf("Please input a name you want to delete : ");
@@ -135,11 +135,11 @@ void delete ()
     }
     qtr = ptr->pre_inflect_people;
     cities[ptr->city - 65].inflected_people--;
-    //從tree中刪除
-    find_in_nameTree(rootName, rootName, name, 0); //要delete 掉的name
+    //delete from tree
+    find_in_nameTree(rootName, rootName, name, 0); //the node want to delete
     find_in_IDTree(rootID, rootID, ptr, 0);
     if(ptr->next != NULL){
-    ptr->prev->next = ptr->next; //鏈上刪除
+    ptr->prev->next = ptr->next; //delete from chain
     ptr->next->prev = ptr->prev;
     }else{
         ptr->prev->next = NULL;
@@ -183,7 +183,6 @@ void release(int day)
     }
     return;
 }
-// char states[4]={"隔離","居家","解隔"};                remain_day 7   7  -1
 
 void add_user()
 { // 1 Amy F 18 A (id)
@@ -256,7 +255,7 @@ void add_user()
     ptr = (people_node)malloc(sizeof(struct people));
     temptr = head;
     while (temptr->next != NULL)
-    { //從後面加入node
+    { //add node from back
         temptr = temptr->next;
     }
     temptr->next = ptr;
@@ -270,7 +269,7 @@ void add_user()
     else
     {
         while (strncmp(temptr->ID, pre_id, 3) != 0)
-        { //感染源
+        { //dource of inflection
             temptr = temptr->next;
         }
         ptr->pre_inflect_people = temptr;
@@ -284,7 +283,7 @@ void add_user()
     ptr->remain_day = 7;
     ptr->state = isolation;
     update_city();
-    // insert節點進tree
+    // insert node into tree
     rootName = insert(rootName, rootName, rootName, ptr, "name", 0);
     rootID = insert(rootID, rootID, rootID, ptr, "ID", 0);
     return;
