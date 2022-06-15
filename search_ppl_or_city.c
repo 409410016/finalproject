@@ -54,7 +54,7 @@ struct people *search_people_name(const char ppl_name[])
             }
             for (int i = 0; i < k; i++)
             {
-                print("%s", name[i]);
+                printf("%s", name[i]);
             }
             printf("%s", cur->ID);
             //////////////////////////////////////////////////////////////////////////
@@ -82,7 +82,7 @@ struct people *search_people_ID(const char ppl_ID[])
             }
             for (int i = 0; i < k; i++)
             {
-                print("%s", name[i]);
+                printf("%s", name[i]);
             }
             printf("%s", cur->ID);
             //////////////////////////////////////////////////////////////////////////
