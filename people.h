@@ -51,6 +51,7 @@ ptrTree rootID;
 int today;
 FILE *fp;
 people_node head;
+int city_state[5];
 
 //basic func()
 void add();                                                                 //加入people，同時增加city人數

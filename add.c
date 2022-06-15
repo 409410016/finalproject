@@ -40,6 +40,9 @@ void add(){                 //新增人員、累加當天人數、結束時更�
         printf("invalid input!\n");
         return;
     }
+    if(city_state[(*city)-65] == 1){
+        return;
+    }
     chop = strtok(NULL," \0\n\r");
     pre_id = chop;
     people_node qtr;

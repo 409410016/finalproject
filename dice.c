@@ -44,14 +44,20 @@ void medicine( const char *ppl_name){
     int min = 1;
     int max = 3;
     int x = rand() % (max - min + 1) + min;
-    if(x==3)
-        cur->remain_day = 0;
-
+    if(x==3 && cur->state == 0){
+        cur->state = 1;
+        cur->remain_day = 7;
+    }else if(x==3 && cur->state == 1){
+        cur->state = 2;
+        cur->remain_day = -1;
+    }
+    return;
 }
 
 void clear(char city){
     struct people* ptr;
     ptr = head->next;
+    cities[city-65].inflected_people = 0;
     while(ptr!=NULL){
         if (ptr->city == city){
             ptr->state = releases;
@@ -90,14 +96,25 @@ void immigrate(char city){
     while(ptr->city != city){
         ptr = ptr->next;
     }
+    cities[ptr->city-65].inflected_people--;
+    cities[ptr->city-65].total_people--;
     if(ptr->city == 'E'){
         ptr->city = 'A';
+        cities[ptr->city-65].inflected_people++;
+        cities[ptr->city-65].total_people++;
+        update_city();
     }else{
         ptr->city = ptr->city+1;
+        cities[ptr->city-65].inflected_people++;
+        cities[ptr->city-65].total_people++;
+        update_city();
     }
     return;
 }
 
-void block_days(char city){
-
+void block_days(char city){                                                 //封鎖城市不讀入測資
+    printf("City %c is blocked right now!!\n",city);
+    printf("There won't appear any inflected person in city %c",city);
+    city_state[city-65] = 1;
+    return;
 }
