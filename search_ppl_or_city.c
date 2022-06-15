@@ -14,7 +14,7 @@ void search(){
     if (No == 1){
         ptr=search_people_name(condition);
         printf("ID\tNAME\tSEX\tAGE\tCITY\tREMAIN_DAY\tSTATE\n");
-        printf("%s\t%s\t%c\t%d\t%c\t%d\t", ptr->ID, ptr->name, ptr->sex, ptr->age, ptr->city, ptr->remain_day);
+        printf("%s\t%s\t%c\t%d\t%c\t%d\t\t", ptr->ID, ptr->name, ptr->sex, ptr->age, ptr->city, ptr->remain_day);
         if(ptr->state==0) printf("isolation\n");
         else if(ptr->state==1) printf("quarantine\n");
         else if(ptr->state==2) printf("release\n");
@@ -22,7 +22,7 @@ void search(){
     else if (No == 2){
         ptr=search_people_ID(condition);
         printf("ID\tNAME\tSEX\tAGE\tCITY\tREMAIN_DAY\tSTATE\n");
-        printf("%s\t%s\t%c\t%d\t%c\t%d\t", ptr->ID, ptr->name, ptr->sex, ptr->age, ptr->city, ptr->remain_day);
+        printf("%s\t%s\t%c\t%d\t%c\t%d\t\t", ptr->ID, ptr->name, ptr->sex, ptr->age, ptr->city, ptr->remain_day);
         if(ptr->state==0) printf("isolation\n");
         else if(ptr->state==1) printf("quarantine\n");
         else if(ptr->state==2) printf("release\n");

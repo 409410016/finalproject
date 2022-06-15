@@ -19,7 +19,7 @@
         4. City
         5. Name
         6. remain day(isolation)
-        7. State(isolation/release)
+        7. State(isolation/quarantine/release)
 
     B. Information of city:
         1. How many people are in this city?

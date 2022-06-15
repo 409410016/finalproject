@@ -26,7 +26,7 @@ void init(){
 }
 
 void print_all(){
-    // 人員基本資料
+    // basic information
     struct people *cur;
     cur = head->next;
     printf("ID\tNAME\t\tSEX\tAGE\tCITY\tREMAIN_DAY\tSTATE\n");
@@ -39,7 +39,7 @@ void print_all(){
     }
     printf("\n");
     
-    // 城市資料
+    // city data
     printf("City\tTotal\tinflect\tinflect rate\n");
     printf("A\t%d\t%d\t%f\n", cities[0].total_people, cities[0].inflected_people, cities[0].inflected_rate);
     printf("B\t%d\t%d\t%f\n", cities[1].total_people, cities[1].inflected_people, cities[1].inflected_rate);
@@ -54,7 +54,7 @@ int main(){
     fp = fopen("data.txt","r");
     today = 1;
     
-    //每天
+    // daily
     while(1){
         // read data
         int new;
@@ -62,6 +62,7 @@ int main(){
         while(new--) add();
 
         // basic operation
+        // choose which to use
         char instruct[10];
         printf("Please input these command to use the database!!\n\"ADD\"(add a person to database)\n\"DELETE\"(delete a person in the database)\n\"TRAVERSE\"(print all the data in the data base)\n\"SEARCH\"(can search the database and print out)\n\"SORT\"(can sort the database and print out)\n\"END\"(today will be end and going to the next day) to use the database.\n");
         while(scanf("%s",&instruct)){
@@ -77,6 +78,7 @@ int main(){
         for(int i =0 ;i<5;i++){
             city_state[i] = 0;
         }
+        // can decide whether use the dice or not
         if(DICE){
             for(int i=0;i<num_of_cities;i++){
                 dice_city(i);
