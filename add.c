@@ -127,7 +127,7 @@ void delete ()
         if(strcmp(name,ptr->name)==0){
             break;
         }
-        ptr = ptr->name;
+        ptr = ptr->next;
     }
     qtr = ptr->pre_inflect_people;
     cities[ptr->city - 65].inflected_people--;
