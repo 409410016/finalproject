@@ -113,8 +113,8 @@ int search_city(const char ppl_city[])
 //         }
 //         else
 //         {
-//             return i; //回傳該城市所屬數字
+//             return i; 
 //         }
 //     }
-    return (*ppl_city-65);
+    return (*ppl_city-65);//return city's num
 }
