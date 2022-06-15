@@ -129,6 +129,10 @@ void delete ()
         }
         ptr = ptr->next;
     }
+    if(ptr == NULL){
+        printf("invalid input!!\n");
+        return;
+    }
     qtr = ptr->pre_inflect_people;
     cities[ptr->city - 65].inflected_people--;
     //從tree中刪除
@@ -137,32 +141,13 @@ void delete ()
 
     ptr->prev->next = ptr->next; //鏈上刪除
     ptr->next->prev = ptr->prev;
-    temp = head->next;
-    int check = 0;
-
-    while (temp->next != NULL)
-    {
-        if (strcmp(ptr->ID, temp->ID) == 0)
-        {
-            check = 1;
-            break;
-        }
-        temp = temp->next;
-    }
-    if (check == 0)
-    {
-        printf("invalid input!\n");
-        return;
-    }
 
     temp = head -> next;
-    while (temp != NULL)
-    {
-        if (strcmp(temp->ID, ptr->ID) == 0)
-        {
+    while (temp != NULL){
+        if (strcmp(temp->ID, ptr->ID) == 0){
             temp->pre_inflect_people = qtr;
         }
-        temp = temp ->next
+        temp = temp ->next;
     }
     free(ptr);
     update_city();
