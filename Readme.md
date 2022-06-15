@@ -1,5 +1,12 @@
 
 ### Background:
+    In response to new disease breakout, throughtout the country everyone is in a hard time, so we want to build a database to store the disease case.
+    (!!This is not the real situation, it is purely for research!!)
+    
+### What can it do?
+    1. **basic operation**: User can modify the data in this data, or check the information about the city and cases.
+    2. **simulate the real situation**: In each day, we pretend to be the mayor on a mission.
+    So that we can study the situation of this epidemic.
 
 ### What information we use:
     A. **Information of people**:
