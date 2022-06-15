@@ -42,11 +42,11 @@ void print_all(){
     
     // 城市資料
     printf("City\tTotal\tinflect\tinflect rate\n");
-    printf("A\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflected_people, cities[i].inflected_rate);
-    printf("B\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflected_people, cities[i].inflected_rate);
-    printf("C\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflected_people, cities[i].inflected_rate);
-    printf("D\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflected_people, cities[i].inflected_rate);
-    printf("E\t%d\t%d\t%f\n", cities[i].total_people, cities[i].inflected_people, cities[i].inflected_rate);
+    printf("A\t%d\t%d\t%f\n", cities[0].total_people, cities[0].inflected_people, cities[0].inflected_rate);
+    printf("B\t%d\t%d\t%f\n", cities[1].total_people, cities[1].inflected_people, cities[1].inflected_rate);
+    printf("C\t%d\t%d\t%f\n", cities[2].total_people, cities[2].inflected_people, cities[2].inflected_rate);
+    printf("D\t%d\t%d\t%f\n", cities[3].total_people, cities[3].inflected_people, cities[3].inflected_rate);
+    printf("E\t%d\t%d\t%f\n", cities[4].total_people, cities[4].inflected_people, cities[4].inflected_rate);
 }
 
 int main(){
